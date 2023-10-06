@@ -2,11 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -16,6 +16,22 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        background: "var(--bg)",
+        primary: "var(--primary)",
+        primary_one: "var(--primary-1)",
+        secondary: "var(--secondary)",
+        secondary_one: "var(--secondary-1)",
+        secondary_two: "var(--secondary-2)",
+        text: "var(--ext)",
+        text_one: "var(--text-1)",
+        text_two: "var(--text-2)",
+        button: "var(--button)",
+        button_one: "var(--button-1)",
+        button_two: "var(--button-2)",
+        button_hover: "var(--hover-button)",
+        button_hover_one: "var(--hover-button-1)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -33,4 +49,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
