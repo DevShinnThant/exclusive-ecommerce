@@ -18,3 +18,21 @@
   --hover-button: #e07575;
   --hover-button-1: #a0bce0;
 }
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer utilities {
+  .max-width {
+    @apply m-auto max-w-6xl;
+  }
+}
+
+@layer components {
+  .text-link {
+    @apply after:content-[''] after:block after:w-0 after:h-[2px] after:bg-button after:transition-[width] hover:after:w-full;
+  }
+}

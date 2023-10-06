@@ -5,6 +5,7 @@ import { Poppins } from "next/font/google";
 
 import { NextAuthProvider } from "@/lib/providers/SessionProvider";
 import QueryProvider from "@/lib/providers/QueryProvider";
+import Navbar from "@/components/layout/Navbar";
 
 const poppins = Poppins({
   style: "normal",
@@ -25,11 +26,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <NextAuthProvider>
-          <QueryProvider>
-            <div className="flex min-h-screen flex-col">{children}</div>
-          </QueryProvider>
-        </NextAuthProvider>
+        <div className="flex min-h-screen bg-background flex-col">
+          <NextAuthProvider>
+            <QueryProvider>
+              <Navbar />
+              {children}
+            </QueryProvider>
+          </NextAuthProvider>
+        </div>
       </body>
     </html>
   );
