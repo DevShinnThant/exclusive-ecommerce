@@ -27,12 +27,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <div className="flex min-h-screen bg-background flex-col">
-          <NextAuthProvider>
-            <QueryProvider>
-              <Navbar />
-              {children}
-            </QueryProvider>
-          </NextAuthProvider>
+          {/* <NextAuthProvider>
+            <QueryProvider> */}
+          <Navbar />
+          {children}
+          {/* </QueryProvider>
+          </NextAuthProvider> */}
         </div>
       </body>
     </html>
