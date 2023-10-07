@@ -17,9 +17,9 @@ export default function Auth() {
     <main className="main-container">
       <div className="flex gap-20 items-center pt-10">
         <div>
-          <Image width={530} src={AuthCover} alt="Auth Cover Image" priority />
+          <Image width={560} src={AuthCover} alt="Auth Cover Image" priority />
         </div>
-        <div className="flex flex-1 flex-col items-start justify-start">
+        <div className="flex flex-col items-start justify-center">
           <div className="text-4xl">Create an account</div>
           <div className="text-sm mt-4">Enter your details below</div>
 

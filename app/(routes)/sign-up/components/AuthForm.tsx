@@ -7,7 +7,7 @@ import SignIn from "./SignIn";
 export default function AuthForm() {
   const [formType, setFormType] = useState<"signIn" | "signUp">("signUp");
   return (
-    <div>
+    <div className="h-[400px]">
       {formType === "signUp" ? (
         <SignUp onFormChange={setFormType} />
       ) : (

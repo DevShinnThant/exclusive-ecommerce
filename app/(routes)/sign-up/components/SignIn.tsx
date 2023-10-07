@@ -15,22 +15,31 @@ import { Input } from "@/components/ui/input";
 import GoogleIcon from "@/app/icons/Google";
 import { Dispatch, SetStateAction } from "react";
 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const signInSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(5, {
+    message: "Password must be at least 2 characters.",
   }),
 });
+
+type SchemaType = z.infer<typeof signInSchema>;
 
 interface Props {
   onFormChange: Dispatch<SetStateAction<"signIn" | "signUp">>;
 }
 
 export default function SignIn({ onFormChange }: Props) {
-  const form = useForm();
+  const form = useForm<SchemaType>({
+    resolver: zodResolver(signInSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
 
-  function onSubmit() {
-    console.log("hello");
-  }
+  function onSubmit(values: SchemaType) {}
 
   return (
     <Form {...form}>
@@ -48,7 +57,6 @@ export default function SignIn({ onFormChange }: Props) {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -66,7 +74,6 @@ export default function SignIn({ onFormChange }: Props) {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -87,7 +94,7 @@ export default function SignIn({ onFormChange }: Props) {
           <div>Sign In with google</div>
         </Button>
       </form>
-      <div className="text-xs m-auto w-fit mt-4">
+      <div className="text-xs m-auto w-fit mt-6">
         Do not have account?{" "}
         <span
           onClick={() => onFormChange("signUp")}

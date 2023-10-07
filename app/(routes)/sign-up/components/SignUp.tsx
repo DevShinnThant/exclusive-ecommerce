@@ -15,21 +15,36 @@ import { Input } from "@/components/ui/input";
 import GoogleIcon from "@/app/icons/Google";
 import { Dispatch, SetStateAction } from "react";
 
-const formSchema = z.object({
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const signUpSchema = z.object({
   username: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
+  email: z.string().email(),
+  password: z.string().min(5, {
+    message: "Password must be at least 2 characters.",
+  }),
 });
+
+type SchemaType = z.infer<typeof signUpSchema>;
 
 interface Props {
   onFormChange: Dispatch<SetStateAction<"signIn" | "signUp">>;
 }
 
 export default function SignUp({ onFormChange }: Props) {
-  const form = useForm();
+  const form = useForm<SchemaType>({
+    resolver: zodResolver(signUpSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+    },
+  });
 
-  function onSubmit() {
-    console.log("hello");
+  function onSubmit(values: SchemaType) {
+    console.log(values);
   }
 
   return (
@@ -48,7 +63,6 @@ export default function SignUp({ onFormChange }: Props) {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -65,7 +79,6 @@ export default function SignUp({ onFormChange }: Props) {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -83,7 +96,6 @@ export default function SignUp({ onFormChange }: Props) {
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
             </FormItem>
           )}
         />
@@ -104,7 +116,7 @@ export default function SignUp({ onFormChange }: Props) {
           <div>Sign Up with google</div>
         </Button>
       </form>
-      <div className="text-xs m-auto w-fit mt-4">
+      <div className="text-xs m-auto w-fit mt-6">
         Already have account?{" "}
         <span
           onClick={() => onFormChange("signIn")}
