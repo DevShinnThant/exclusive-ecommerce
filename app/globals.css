@@ -29,6 +29,9 @@
   .max-width {
     @apply m-auto max-w-6xl;
   }
+  .main-container {
+    @apply mx-auto w-full max-w-6xl py-6;
+  }
 }
 
 @layer components {
