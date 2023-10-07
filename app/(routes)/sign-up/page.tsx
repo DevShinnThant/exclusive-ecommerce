@@ -15,7 +15,7 @@ export const metadata = {
 export default function Auth() {
   return (
     <main className="main-container">
-      <div className="flex gap-20 items-center pt-10">
+      <div className="flex gap-20 items-center py-16">
         <div>
           <Image width={560} src={AuthCover} alt="Auth Cover Image" priority />
         </div>
@@ -23,7 +23,7 @@ export default function Auth() {
           <div className="text-4xl">Create an account</div>
           <div className="text-sm mt-4">Enter your details below</div>
 
-          <div className="mt-10">
+          <div className="my-10">
             <AuthForm />
           </div>
         </div>
