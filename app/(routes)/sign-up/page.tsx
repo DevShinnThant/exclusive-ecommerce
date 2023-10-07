@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import AuthCover from "@/public/images/Side Image.svg";
-import SignUp from "./components/SignUp";
+import AuthForm from "./components/AuthForm";
 
 export const metadata = {
   title: "Sign Up",
@@ -24,7 +24,7 @@ export default function Auth() {
           <div className="text-sm mt-4">Enter your details below</div>
 
           <div className="mt-10">
-            <SignUp />
+            <AuthForm />
           </div>
         </div>
       </div>

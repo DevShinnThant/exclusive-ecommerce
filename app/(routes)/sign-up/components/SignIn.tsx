@@ -25,7 +25,7 @@ interface Props {
   onFormChange: Dispatch<SetStateAction<"signIn" | "signUp">>;
 }
 
-export default function SignUp({ onFormChange }: Props) {
+export default function SignIn({ onFormChange }: Props) {
   const form = useForm();
 
   function onSubmit() {
@@ -35,23 +35,6 @@ export default function SignUp({ onFormChange }: Props) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-        <FormField
-          control={form.control}
-          name="username"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Username</FormLabel>
-              <FormControl>
-                <Input
-                  className="w-[340px]"
-                  placeholder="Enter your name"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
         <FormField
           control={form.control}
           name="email"
@@ -92,7 +75,7 @@ export default function SignUp({ onFormChange }: Props) {
           className="w-full mt-2 h-10 bg-button_two hover:bg-button_hover"
           type="submit"
         >
-          Create Account
+          Sign In
         </Button>
 
         <Button
@@ -101,16 +84,16 @@ export default function SignUp({ onFormChange }: Props) {
           type="submit"
         >
           <GoogleIcon />
-          <div>Sign Up with google</div>
+          <div>Sign In with google</div>
         </Button>
       </form>
       <div className="text-xs m-auto w-fit mt-4">
-        Already have account?{" "}
+        Do not have account?{" "}
         <span
-          onClick={() => onFormChange("signIn")}
+          onClick={() => onFormChange("signUp")}
           className="underline ml-2 cursor-pointer"
         >
-          Login
+          Sign Up
         </span>
       </div>
     </Form>
