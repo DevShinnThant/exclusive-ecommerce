@@ -3,7 +3,6 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
-import { NextAuthProvider } from "@/lib/providers/SessionProvider";
 import QueryProvider from "@/lib/providers/QueryProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -28,13 +27,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <div className="flex min-h-screen bg-background flex-col">
-          <NextAuthProvider>
-            <QueryProvider>
-              <Navbar />
-              {children}
-              <Footer />
-            </QueryProvider>
-          </NextAuthProvider>
+          <QueryProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </QueryProvider>
         </div>
       </body>
     </html>

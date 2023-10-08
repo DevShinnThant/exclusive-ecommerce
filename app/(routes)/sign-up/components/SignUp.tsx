@@ -8,7 +8,6 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
@@ -16,6 +15,7 @@ import GoogleIcon from "@/app/icons/Google";
 import { Dispatch, SetStateAction } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth } from "@/lib/hooks/useAuth";
 
 const signUpSchema = z.object({
   username: z.string().min(2, {
@@ -34,6 +34,8 @@ interface Props {
 }
 
 export default function SignUp({ onFormChange }: Props) {
+  const { register } = useAuth();
+
   const form = useForm<SchemaType>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -43,8 +45,12 @@ export default function SignUp({ onFormChange }: Props) {
     },
   });
 
-  function onSubmit(values: SchemaType) {
-    console.log(values);
+  async function onSubmit(values: SchemaType) {
+    const response = await register(
+      values.username,
+      values.email,
+      values.password
+    );
   }
 
   return (

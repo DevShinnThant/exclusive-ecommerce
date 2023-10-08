@@ -19,7 +19,6 @@
     "clsx": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
     "next": "13.5.4",
-    "next-auth": "^4.23.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",

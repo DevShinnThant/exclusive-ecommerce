@@ -2,13 +2,12 @@ import Image from "next/image";
 import { Input } from "../ui/input";
 
 import QRImage from "@/public/images/QRImage.svg";
-import { AiFillFacebook } from "react-icons/ai";
 import { FiFacebook, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
 
 export default function Footer() {
   return (
     <div className="w-full h-[380px] bg-button">
-      <div className="h-full pt-16 pb-10 grid grid-cols-10 gap-20 px-32">
+      <div className="h-full pt-16 pb-10 grid grid-cols-10 gap-16 px-32">
         <div className="col-span-2 text-white flex flex-col items-start">
           <div className=" font-medium tracking-wider">Exclusive</div>
           <div className="my-4 text-sm">Subscribe</div>
