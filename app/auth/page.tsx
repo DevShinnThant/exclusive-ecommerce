@@ -1,12 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/hooks/useAuth";
-import { signIn, signOut, useSession } from "next-auth/react";
 
 export default function Home() {
-  const { data: session } = useSession();
-
   const { login } = useAuth();
 
   const handleSignIn = async (e: any) => {
@@ -40,16 +36,6 @@ export default function Home() {
           Sign In
         </button>
       </form>
-      {session && (
-        <Button
-          variant="destructive"
-          onClick={() => {
-            signOut();
-          }}
-        >
-          Log out
-        </Button>
-      )}
     </div>
   );
 }
