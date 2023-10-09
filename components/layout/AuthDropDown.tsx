@@ -3,69 +3,68 @@
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useGetAuthAtom } from "@/lib/store/client/atoms/auth-atom";
+
 import { PersonIcon } from "@radix-ui/react-icons";
 import { Button } from "../ui/button";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useToast } from "../ui/use-toast";
 import Link from "next/link";
+import { useAuthLogout } from "@/lib/store/server/auth/mutations";
+import { useAuthStore } from "@/lib/store/client/authStore";
 
 export default function AuthDropDown() {
-  const { auth, setAuth } = useGetAuthAtom();
-
-  const { toast } = useToast();
-
-  const { logout } = useAuth();
+  const { token } = useAuthStore();
+  const logoutMutator = useAuthLogout();
 
   const handleLogOut = () => {
-    logout();
-    setAuth({
-      token: "",
-      username: "",
-    });
-    toast({
-      title: "Success",
-      description: "Logout successfully",
-    });
+    logoutMutator.mutate();
   };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center cursor-pointer">
+        <Button
+          name="setting"
+          aria-label="Auth Setting Icon"
+          variant="ghost"
+          className="p-[10px] bg-secondary rounded-full"
+        >
           <PersonIcon className="cursor-pointer w-4 h-4" />
-        </div>
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <div className="text-sm pl-2 my-2">
-            {auth.username || "Public User"}
-          </div>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        {auth.token ? (
+        <DropdownMenuGroup>
           <DropdownMenuItem asChild>
-            <Button
-              onClick={() => handleLogOut()}
-              className="h-5 text-xs py-4 w-full"
-            >
-              Logout
-            </Button>
+            <div className="text-sm pl-2 my-2">
+              {token ? "Authenticated" : "Public User"}
+            </div>
           </DropdownMenuItem>
-        ) : (
-          <DropdownMenuItem asChild>
-            <Link className="w-full" href="/sign-up">
-              <Button className="w-full h-4 py-4 text-xs">Sign In</Button>
-            </Link>
-          </DropdownMenuItem>
-        )}
+          <DropdownMenuSeparator />
+          {token ? (
+            <DropdownMenuItem asChild>
+              <Button
+                onClick={() => handleLogOut()}
+                className="h-5 text-xs py-4 w-full"
+              >
+                Logout
+              </Button>
+            </DropdownMenuItem>
+          ) : (
+            <DropdownMenuItem asChild>
+              <Link className="w-full" href="/sign-up">
+                <Button className="w-full h-4 py-4 text-xs">Sign In</Button>
+              </Link>
+            </DropdownMenuItem>
+          )}
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );

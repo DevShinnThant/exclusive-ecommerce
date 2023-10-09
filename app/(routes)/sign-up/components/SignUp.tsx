@@ -1,6 +1,10 @@
 "use client";
 
+// Packages
 import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+// Components
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -9,18 +13,15 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
-import GoogleIcon from "@/app/icons/Google";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useAuth } from "@/lib/hooks/useAuth";
-import { useGetAuthAtom } from "@/lib/store/client/atoms/auth-atom";
-import { useState } from "react";
+// Hooks
+import { useAuthRegister } from "@/lib/store/server/auth/mutations";
+import { useForm } from "react-hook-form";
 
+// Icons
 import { ReloadIcon } from "@radix-ui/react-icons";
-import { useToast } from "@/components/ui/use-toast";
-import { useRouter } from "next/navigation";
+import GoogleIcon from "@/app/icons/Google";
 
 const signUpSchema = z.object({
   username: z.string().min(2, {
@@ -35,16 +36,6 @@ const signUpSchema = z.object({
 type SchemaType = z.infer<typeof signUpSchema>;
 
 export default function SignUp() {
-  const { register } = useAuth();
-
-  const { auth, setAuth } = useGetAuthAtom();
-
-  const router = useRouter();
-
-  const { toast } = useToast();
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const form = useForm<SchemaType>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -54,26 +45,14 @@ export default function SignUp() {
     },
   });
 
-  async function onSubmit(values: SchemaType) {
-    setIsLoading(true);
+  const registerMutator = useAuthRegister();
 
-    await register(values.username, values.email, values.password)
-      .then((response) => {
-        setAuth({
-          token: response.jwt,
-          username: (response.user?.username as string) || "",
-        });
-        setIsLoading(false);
+  async function onSubmit(values: SchemaType) {
+    registerMutator.mutate(values, {
+      onSuccess: () => {
         form.reset();
-        toast({
-          title: "Success",
-          description: "Sign Up Successfully",
-        });
-        router.push("/");
-      })
-      .catch((err) => {
-        setIsLoading(false);
-      });
+      },
+    });
   }
 
   return (
@@ -137,7 +116,9 @@ export default function SignUp() {
             className="w-full mt-2 h-10 bg-button_two hover:bg-button_hover"
             type="submit"
           >
-            {isLoading && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{" "}
+            {registerMutator.isLoading && (
+              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+            )}{" "}
             Create Account
           </Button>
 

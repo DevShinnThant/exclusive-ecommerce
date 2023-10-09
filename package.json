@@ -26,11 +26,11 @@
     "react-hook-form": "^7.47.0",
     "react-icons": "^4.11.0",
     "react-query": "^3.39.3",
-    "recoil": "^0.7.7",
     "strapi-sdk-js": "^2.3.3",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "zustand": "^4.4.3"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.3",

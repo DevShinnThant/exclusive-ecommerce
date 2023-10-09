@@ -1,6 +1,7 @@
 "use client";
 
-import { z } from "zod";
+// Components
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -9,20 +10,22 @@ import {
   FormItem,
   FormLabel,
 } from "@/components/ui/form";
-import { useForm } from "react-hook-form";
-import { Input } from "@/components/ui/input";
-import GoogleIcon from "@/app/icons/Google";
 
+// Packages
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useGetAuthAtom } from "@/lib/store/client/atoms/auth-atom";
-import { useRouter } from "next/navigation";
-import { useToast } from "@/components/ui/use-toast";
-import { useState } from "react";
-import { useAuth } from "@/lib/hooks/useAuth";
+
+// Icons
+import GoogleIcon from "@/app/icons/Google";
 import { ReloadIcon } from "@radix-ui/react-icons";
 
+// Hooks
+import { useAuthLogin } from "@/lib/store/server/auth/mutations";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+
 const signInSchema = z.object({
-  email: z.string().email(),
+  identifier: z.string().email(),
   password: z.string().min(5, {
     message: "Password must be at least 2 characters.",
   }),
@@ -31,44 +34,25 @@ const signInSchema = z.object({
 type SchemaType = z.infer<typeof signInSchema>;
 
 export default function SignIn() {
-  const { auth, setAuth } = useGetAuthAtom();
-
-  const { login } = useAuth();
-
   const router = useRouter();
-
-  const { toast } = useToast();
-
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const form = useForm<SchemaType>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
-      email: "",
+      identifier: "",
       password: "",
     },
   });
 
-  async function onSubmit(values: SchemaType) {
-    setIsLoading(true);
+  const signInMutator = useAuthLogin();
 
-    await login(values.email, values.password)
-      .then((response) => {
-        setAuth({
-          token: response.jwt,
-          username: (response.user?.username as string) || "",
-        });
-        setIsLoading(false);
+  async function onSubmit(values: SchemaType) {
+    signInMutator.mutate(values, {
+      onSuccess: () => {
         form.reset();
-        toast({
-          title: "Success",
-          description: "Sign Up Successfully",
-        });
         router.push("/");
-      })
-      .catch((err) => {
-        setIsLoading(false);
-      });
+      },
+    });
   }
 
   return (
@@ -79,7 +63,7 @@ export default function SignIn() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
           <FormField
             control={form.control}
-            name="email"
+            name="identifier"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Email</FormLabel>
@@ -116,7 +100,9 @@ export default function SignIn() {
             className="w-full mt-2 h-10 bg-button_two hover:bg-button_hover"
             type="submit"
           >
-            {isLoading && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{" "}
+            {signInMutator.isLoading && (
+              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+            )}{" "}
             Sign In
           </Button>
 
