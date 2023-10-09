@@ -12,10 +12,15 @@ import {
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import GoogleIcon from "@/app/icons/Google";
-import { Dispatch, SetStateAction } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useAuth } from "@/lib/hooks/useAuth";
+import { useGetAuthAtom } from "@/lib/store/client/atoms/auth-atom";
+import { useState } from "react";
+
+import { ReloadIcon } from "@radix-ui/react-icons";
+import { useToast } from "@/components/ui/use-toast";
+import { useRouter } from "next/navigation";
 
 const signUpSchema = z.object({
   username: z.string().min(2, {
@@ -25,7 +30,6 @@ const signUpSchema = z.object({
   password: z.string().min(5, {
     message: "Password must be at least 2 characters.",
   }),
-  image: z.string(),
 });
 
 type SchemaType = z.infer<typeof signUpSchema>;
@@ -33,23 +37,43 @@ type SchemaType = z.infer<typeof signUpSchema>;
 export default function SignUp() {
   const { register } = useAuth();
 
+  const { auth, setAuth } = useGetAuthAtom();
+
+  const router = useRouter();
+
+  const { toast } = useToast();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const form = useForm<SchemaType>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: "",
       email: "",
       password: "",
-      image: "",
     },
   });
 
   async function onSubmit(values: SchemaType) {
-    const response = await register(
-      values.username,
-      values.email,
-      values.password
-      // values.image
-    );
+    setIsLoading(true);
+
+    await register(values.username, values.email, values.password)
+      .then((response) => {
+        setAuth({
+          token: response.jwt,
+          username: (response.user?.username as string) || "",
+        });
+        setIsLoading(false);
+        form.reset();
+        toast({
+          title: "Success",
+          description: "Sign Up Successfully",
+        });
+        router.push("/");
+      })
+      .catch((err) => {
+        setIsLoading(false);
+      });
   }
 
   return (
@@ -109,28 +133,11 @@ export default function SignUp() {
             )}
           />
 
-          <FormField
-            control={form.control}
-            name="image"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Image</FormLabel>
-                <FormControl>
-                  <Input
-                    type="file"
-                    className="w-[340px]"
-                    placeholder="Enter your password"
-                    {...field}
-                  />
-                </FormControl>
-              </FormItem>
-            )}
-          />
-
           <Button
             className="w-full mt-2 h-10 bg-button_two hover:bg-button_hover"
             type="submit"
           >
+            {isLoading && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{" "}
             Create Account
           </Button>
 
