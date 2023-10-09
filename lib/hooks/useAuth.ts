@@ -19,7 +19,7 @@ export function useAuth() {
   };
 
   const logout = async () => {
-    await strapi.logout();
+    strapi.logout();
   };
 
   return { register, login, logout };

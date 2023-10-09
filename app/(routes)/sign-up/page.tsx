@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function Auth() {
   return (
-    <main className="main-container my-10">
+    <main className="main-container ">
       <div className="flex gap-20 items-center py-10">
         <Image width={560} src={AuthCover} alt="Auth Cover Image" priority />
         <AuthForm />

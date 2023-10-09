@@ -14,6 +14,12 @@ import { Input } from "@/components/ui/input";
 import GoogleIcon from "@/app/icons/Google";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useGetAuthAtom } from "@/lib/store/client/atoms/auth-atom";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/components/ui/use-toast";
+import { useState } from "react";
+import { useAuth } from "@/lib/hooks/useAuth";
+import { ReloadIcon } from "@radix-ui/react-icons";
 
 const signInSchema = z.object({
   email: z.string().email(),
@@ -25,6 +31,16 @@ const signInSchema = z.object({
 type SchemaType = z.infer<typeof signInSchema>;
 
 export default function SignIn() {
+  const { auth, setAuth } = useGetAuthAtom();
+
+  const { login } = useAuth();
+
+  const router = useRouter();
+
+  const { toast } = useToast();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
   const form = useForm<SchemaType>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -33,7 +49,27 @@ export default function SignIn() {
     },
   });
 
-  function onSubmit(values: SchemaType) {}
+  async function onSubmit(values: SchemaType) {
+    setIsLoading(true);
+
+    await login(values.email, values.password)
+      .then((response) => {
+        setAuth({
+          token: response.jwt,
+          username: (response.user?.username as string) || "",
+        });
+        setIsLoading(false);
+        form.reset();
+        toast({
+          title: "Success",
+          description: "Sign Up Successfully",
+        });
+        router.push("/");
+      })
+      .catch((err) => {
+        setIsLoading(false);
+      });
+  }
 
   return (
     <div>
@@ -67,6 +103,7 @@ export default function SignIn() {
                 <FormControl>
                   <Input
                     className="w-[340px]"
+                    type="password"
                     placeholder="Enter your password"
                     {...field}
                   />
@@ -79,6 +116,7 @@ export default function SignIn() {
             className="w-full mt-2 h-10 bg-button_two hover:bg-button_hover"
             type="submit"
           >
+            {isLoading && <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />}{" "}
             Sign In
           </Button>
 

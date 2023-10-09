@@ -2,10 +2,11 @@
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import SearchInput from "../SearchInput";
 import Link from "next/link";
+import AuthDropDown from "./AuthDropDown";
 
 export default function Navbar() {
   return (
-    <div className="sticky top-0 z-20">
+    <div className="sticky top-0 z-20 flex items-center">
       <div className="w-full bg-background h-20 border-b-[0.1px] border-button flex justify-center items-center">
         <div className="w-full max-width pt-4 pb-2 grid grid-cols-12">
           <div className="col-span-3 flex justify-start items-center">
@@ -29,6 +30,10 @@ export default function Navbar() {
               <AiOutlineShoppingCart size={25} />
             </div>
           </div>
+        </div>
+
+        <div className="mr-3">
+          <AuthDropDown />
         </div>
       </div>
     </div>
