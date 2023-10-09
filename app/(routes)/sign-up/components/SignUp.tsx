@@ -124,8 +124,9 @@ export default function SignUp() {
 
           <Button
             variant="outline"
-            className="w-full h-10 flex gap-4"
+            className="w-full cursor-not-allowed h-10 flex gap-4"
             type="submit"
+            disabled
           >
             <GoogleIcon />
             <div>Sign Up with google</div>

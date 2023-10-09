@@ -108,8 +108,8 @@ export default function SignIn() {
 
           <Button
             variant="outline"
-            className="w-full h-10 flex gap-4"
-            type="submit"
+            disabled
+            className="w-full cursor-not-allowed h-10 flex gap-4"
           >
             <GoogleIcon />
             <div>Sign In with google</div>
