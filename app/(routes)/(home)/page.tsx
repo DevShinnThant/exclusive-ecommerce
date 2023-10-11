@@ -1,3 +1,4 @@
+import BestSellingProducts from "./layout/BestSellingProducts";
 import BrowseByCategory from "./layout/BrowseByCategory";
 import NewArrival from "./layout/NewArrival";
 
@@ -9,6 +10,7 @@ export default function Home() {
       </div>
       <NewArrival />
       <BrowseByCategory />
+      <BestSellingProducts />
     </div>
   );
 }

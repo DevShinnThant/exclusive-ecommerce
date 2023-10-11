@@ -55,12 +55,12 @@ const categories: {
     icon: <FiCamera size={30} />,
   },
   {
-    id: 0,
+    id: 4,
     name: "HeadPhones",
     icon: <PiHeadphones size={30} />,
   },
   {
-    id: 0,
+    id: 5,
     name: "Controllers",
     icon: <IoGameControllerOutline size={30} />,
   },
