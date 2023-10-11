@@ -8,6 +8,11 @@ export interface Meta {
 }
 
 export interface GetResponse<T> {
+  data: T[];
+  meta: Meta;
+}
+
+export interface GetResponseForDetail<T> {
   data: T;
   meta: Meta;
 }
