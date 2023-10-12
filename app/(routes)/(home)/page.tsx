@@ -12,10 +12,10 @@ export default function Home() {
         FREE AND FAST DELIVERY
       </div>
       <NewArrival />
-      <BrowseByCategory />
       <BestSellingProducts />
-      <EnhancedYourMusicExperience />
+      <BrowseByCategory />
       <ExploreOurProducts />
+      <EnhancedYourMusicExperience />
       <CustomerService />
     </div>
   );

@@ -410,10 +410,10 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'oneToOne',
       'api::category.category'
     >;
-    variant: Attribute.Enumeration<['best_selling', 'normal']> &
+    variant: Attribute.Enumeration<['best_selling', 'normal', 'general']> &
       Attribute.DefaultTo<'normal'>;
     image: Attribute.Media & Attribute.Required;
-    price: Attribute.Float & Attribute.Required;
+    price: Attribute.Float;
     dis_price: Attribute.Float & Attribute.Required;
     voting: Attribute.Integer & Attribute.Required;
     rating: Attribute.Float &
