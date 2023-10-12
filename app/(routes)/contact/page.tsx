@@ -20,7 +20,6 @@ import { FiMail } from "react-icons/fi";
 import { PiPhoneCall } from "react-icons/pi";
 
 import { z } from "zod";
-
 const contactFormSchema = z.object({
   email: z.string().email(),
   name: z.string().min(5),
