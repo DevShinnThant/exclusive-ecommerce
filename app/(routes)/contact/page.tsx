@@ -88,7 +88,7 @@ export default function Contact() {
           </CardContent>
         </Card>
 
-        <Card className="flex-1 p-3">
+        <Card className="flex-1 p-8">
           <CardContent className="p-4">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)}>
