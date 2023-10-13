@@ -1,7 +1,6 @@
 "use client";
 
 import CategoryTitle from "@/components/layout/CategotyTitle";
-
 // Icons
 import { BsPhone } from "react-icons/bs";
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
@@ -22,7 +21,7 @@ export default function BrowseByCategory() {
       <div className="grid mt-14 grid-cols-12 gap-4 place-content-center">
         {categories.map(({ id, name, icon: Icon, value }) => (
           <div
-            onClick={() => router.push(`/category?q=${value}`)}
+            onClick={() => router.push(`/search/${value}`)}
             key={id}
             className="transition-all hover:bg-button_two hover:text-white border cursor-pointer col-span-2 h-44 rounded-md flex flex-col gap-4 justify-center items-center border-gray-300"
           >
@@ -68,7 +67,7 @@ const categories: {
   {
     id: 4,
     name: "HeadPhones",
-    value: "headphone",
+    value: "headPhone",
     icon: <PiHeadphones size={30} />,
   },
   {

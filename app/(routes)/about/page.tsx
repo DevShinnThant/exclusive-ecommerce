@@ -7,7 +7,7 @@ import { BsGift, BsShop } from "react-icons/bs";
 import { FiDollarSign } from "react-icons/fi";
 import { FaSackDollar } from "react-icons/fa6";
 import React from "react";
-import CustomerService from "../(home)/layout/CustomerService";
+import CustomerService from "../(home)/components/CustomerService";
 
 export default function About() {
   return (

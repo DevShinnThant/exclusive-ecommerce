@@ -12,28 +12,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useGetCategory } from "@/lib/store/server/category/queries";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
-export function SelectCategory() {
+export function SelectCategory({ disabled = false }: { disabled?: boolean }) {
   const { data } = useGetCategory();
 
   const router = useRouter();
-  const params = useSearchParams();
 
-  const queue = params.get("q");
+  const { category } = useParams();
 
   return (
     <Select
-      value={queue ? queue : ""}
+      disabled={disabled}
+      value={(category as string).toLocaleLowerCase() || ""}
       onValueChange={(value) => {
-        const newParams = new URLSearchParams();
         if (value) {
-          newParams.set("q", value);
-        } else {
-          newParams.delete("q");
+          router.push(`/search/${value}`);
         }
-        const paramsString = newParams.toString();
-        router.push(`/category?${paramsString}`);
       }}
     >
       <SelectTrigger className="w-[200px] rounded-sm">

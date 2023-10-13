@@ -1,9 +1,9 @@
-import BestSellingProducts from "./layout/BestSellingProducts";
-import BrowseByCategory from "./layout/BrowseByCategory";
-import CustomerService from "./layout/CustomerService";
-import EnhancedYourMusicExperience from "./layout/EnhancedYourMusicExperience";
-import ExploreOurProducts from "./layout/ExploreOurProducts";
-import NewArrival from "./layout/NewArrival";
+import BestSellingProducts from "./components/BestSellingProducts";
+import BrowseByCategory from "./components/BrowseByCategory";
+import CustomerService from "./components/CustomerService";
+import EnhancedYourMusicExperience from "./components/EnhancedYourMusicExperience";
+import ExploreOurProducts from "./components/ExploreOurProducts";
+import NewArrival from "./components/NewArrival";
 
 export default function Home() {
   return (
