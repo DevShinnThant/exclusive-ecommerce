@@ -23,8 +23,10 @@ export default function ProductSkeleton() {
 
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-1.5">
-          {[...new Array(5)].map((_) => (
-            <EmptyStarIcon />
+          {[...new Array(5)].map((_, index) => (
+            <div key={index}>
+              <EmptyStarIcon />
+            </div>
           ))}
         </div>
         <Skeleton className="w-4 h-4 rounded-full bg-gray-300" />

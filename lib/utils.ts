@@ -11,7 +11,9 @@ export function generateProductQueryString(payload: ProductQuery) {
 
   const queryString = `api/products?${
     filters
-      ? `filters[${filters.slug.name}][$eq]=${filters.slug.value}&populate=*`
+      ? `filters[${filters.slug.name}]${
+          filters.deep ? `[${filters.deep.columnName}]` : ""
+        }[$eq]=${filters.slug.value}&populate=*`
       : ""
   }${
     pagination

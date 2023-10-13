@@ -3,12 +3,12 @@
 import Link from "next/link";
 
 import CategoryTitle from "@/components/layout/CategotyTitle";
-import { useGetBestSellingProducts } from "@/lib/store/server/product/queries";
+import { useGetProducts } from "@/lib/store/server/product/queries";
 import ProductCard from "@/components/ProductCard";
 import ProductSkeleton from "@/components/skeletons/ProductSkeleton";
 
 export default function BestSellingProducts() {
-  const { isLoading, data } = useGetBestSellingProducts({
+  const { isLoading, data } = useGetProducts({
     filters: {
       slug: {
         name: "variant",
@@ -35,8 +35,8 @@ export default function BestSellingProducts() {
       </div>
       <div className="grid mt-6 grid-cols-12 gap-4">
         {isLoading
-          ? [...new Array(4)].map((_) => <ProductSkeleton key={_} />)
-          : data?.map((item) => <ProductCard key={item.id} product={item} />)}
+          ? [...new Array(4)].map((_, index) => <ProductSkeleton key={index} />)
+          : data?.map((item) => <ProductCard key={item.name} product={item} />)}
       </div>
     </section>
   );

@@ -4,12 +4,12 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 
 import CategoryTitle from "@/components/layout/CategotyTitle";
-import { useGetBestSellingProducts } from "@/lib/store/server/product/queries";
+import { useGetProducts } from "@/lib/store/server/product/queries";
 import ProductSkeleton from "@/components/skeletons/ProductSkeleton";
 import ProductCard from "@/components/ProductCard";
 
 export default function ExploreOurProducts() {
-  const { isLoading, data } = useGetBestSellingProducts({
+  const { isLoading, data } = useGetProducts({
     filters: {
       slug: {
         name: "variant",
@@ -38,8 +38,8 @@ export default function ExploreOurProducts() {
       </div>
       <div className="grid mt-6 grid-cols-12 gap-4">
         {isLoading
-          ? [...new Array(8)].map((_) => <ProductSkeleton key={_} />)
-          : data?.map((item) => <ProductCard key={item.id} product={item} />)}
+          ? [...new Array(8)].map((_, index) => <ProductSkeleton key={index} />)
+          : data?.map((item) => <ProductCard key={item.name} product={item} />)}
       </div>
 
       <div className="flex mt-10 justify-center">

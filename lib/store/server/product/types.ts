@@ -53,6 +53,9 @@ export interface ProductQuery {
       name: string;
       value: string;
     };
+    deep?: {
+      columnName: string;
+    };
   };
   pagination?: {
     page?: number;

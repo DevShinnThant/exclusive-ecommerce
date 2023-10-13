@@ -21,7 +21,7 @@ export default function About() {
           About
         </Link>
       </div>
-      <div className="flex my-10 items-center gap-14">
+      <div className="flex my-10 items-center justify-between gap-14">
         <div className="w-[600px] flex flex-col gap-5 items-start">
           <div className="text-3xl tracking-wide font-semibold">Our Story</div>
           <div className="text-sm text-gray-600 tracking-wide leading-6">

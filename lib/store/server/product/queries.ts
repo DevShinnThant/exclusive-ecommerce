@@ -4,7 +4,7 @@ import { Product, ProductQuery, ProductResponse } from "./types";
 import { GetResponse } from "@/lib/types/api";
 import { generateProductQueryString } from "@/lib/utils";
 
-const fetchBestSellingProducts = async (
+const fetchProducts = async (
   payload: ProductQuery
 ): Promise<GetResponse<ProductResponse>> => {
   const queryString = generateProductQueryString(payload);
@@ -12,10 +12,10 @@ const fetchBestSellingProducts = async (
   return response.data;
 };
 
-export const useGetBestSellingProducts = (payload: ProductQuery) => {
+export const useGetProducts = (payload: ProductQuery) => {
   return useQuery({
-    queryKey: ["best-selling-products", payload],
-    queryFn: () => fetchBestSellingProducts(payload),
+    queryKey: ["fetch-products", payload],
+    queryFn: () => fetchProducts(payload),
     select: (data): Product[] => {
       return data.data.map((item) => {
         const itemAttributes = item.attributes;

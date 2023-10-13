@@ -12,12 +12,24 @@ function generateProductStar(count: number) {
   return [1, 2, 3, 4, 5].map((num) => {
     if (Math.ceil(count) >= num) {
       if (num >= Math.ceil(count) && num === count + 0.5) {
-        return <HalfStarIcon />;
+        return (
+          <div key={num}>
+            <HalfStarIcon />
+          </div>
+        );
       } else {
-        return <FullStarIcon />;
+        return (
+          <div key={num}>
+            <FullStarIcon />
+          </div>
+        );
       }
     } else {
-      return <EmptyStarIcon />;
+      return (
+        <div key={num}>
+          <EmptyStarIcon />
+        </div>
+      );
     }
   });
 }
