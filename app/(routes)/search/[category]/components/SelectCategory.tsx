@@ -31,7 +31,7 @@ export function SelectCategory({ disabled = false }: { disabled?: boolean }) {
         }
       }}
     >
-      <SelectTrigger className="w-[200px] rounded-sm">
+      <SelectTrigger className="w-[200px] focus:inset-0 focus:ring-0 focus:appearance-none rounded-sm">
         <SelectValue placeholder="Select Category" />
       </SelectTrigger>
       <SelectContent>

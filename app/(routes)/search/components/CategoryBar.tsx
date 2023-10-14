@@ -25,7 +25,7 @@ export default function CategoryBar() {
             <Link
               className="text-sm cursor-pointer tracking-normal hover:border-b-[1px] hover:border-b-gray-600 transition-all"
               key={item.value}
-              href={`/search?tag=category&name=${item.label}`}
+              href={`/search/product?tag=category&name=${item.label}`}
             >
               {item.label}
             </Link>

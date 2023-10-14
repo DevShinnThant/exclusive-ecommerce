@@ -31,7 +31,7 @@ export default function SearchInput() {
     const query = `${paramsString.length ? "?" : ""}${paramsString}`;
 
     if (paramsString) {
-      router.push(`/search${query}`);
+      router.push(`/search/product${query}`);
     } else {
       router.push("/");
     }

@@ -9,7 +9,7 @@ export default function Loading() {
         <SelectCategory disabled={true} />
         <div className="flex items-center gap-2 text-sm">
           <Skeleton className="w-5 h-5 bg-gray-300 rounded-full" />
-          <div>Products</div>
+          <div>Product</div>
         </div>
       </div>
       <div className="grid mt-6 grid-cols-12 gap-4">

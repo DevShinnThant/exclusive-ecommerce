@@ -1,9 +1,9 @@
 import { generateProductQueryString } from "@/lib/utils";
-import CategoryBar from "./components/CategoryBar";
+import CategoryBar from "../components/CategoryBar";
 import axios from "@/lib/api/axios";
 import { ProductSelector } from "@/lib/store/server/product/selectors";
-import ProductSection from "./components/ProductSection";
-import SortBar from "./components/SortBar";
+import ProductSection from "../components/ProductSection";
+import SortBar from "../components/SortBar";
 import { Suspense } from "react";
 import SearchProductLoading from "./loading";
 

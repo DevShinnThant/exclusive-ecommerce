@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
-import CategoryBar from "./components/CategoryBar";
-import SortBar from "./components/SortBar";
+import CategoryBar from "../components/CategoryBar";
+import SortBar from "../components/SortBar";
 
 export default function SearchProductLoading() {
   return (

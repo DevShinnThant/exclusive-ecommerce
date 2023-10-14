@@ -46,7 +46,7 @@ export default async function Category({
         <SelectCategory />
         <div className="flex items-center gap-2 text-sm">
           <div className="font-medium">{products?.length}</div>
-          <div>Products</div>
+          <div>Product{products.length > 1 ? "s" : ""}</div>
         </div>
       </div>
       <ProductByCategory products={products} />
