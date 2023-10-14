@@ -18,12 +18,6 @@ async function fetchProducts(props: {
     value: string;
   };
 }) {
-  await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("success");
-    }, 1000);
-  });
-
   let queryString: string;
 
   if (props.tag === "category" && props.category) {
