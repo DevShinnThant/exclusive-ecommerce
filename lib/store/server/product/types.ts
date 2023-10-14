@@ -53,6 +53,7 @@ export interface ProductQuery {
       name: string;
       value: string;
     };
+    property?: string;
     deep?: {
       columnName: string;
     };

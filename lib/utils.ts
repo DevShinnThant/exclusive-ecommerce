@@ -13,7 +13,7 @@ export function generateProductQueryString(payload: ProductQuery) {
     filters
       ? `filters[${filters.slug.name}]${
           filters.deep ? `[${filters.deep.columnName}]` : ""
-        }[$eq]=${filters.slug.value}&populate=*`
+        }[${filters.property || "$eq"}]=${filters.slug.value}&populate=*`
       : ""
   }${
     pagination

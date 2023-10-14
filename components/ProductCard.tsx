@@ -8,6 +8,8 @@ import HalfStarIcon from "@/app/icons/HalfStar";
 import FullStarIcon from "@/app/icons/FullStar";
 import EmptyStarIcon from "@/app/icons/EmptyStar";
 
+const Server = process.env.NEXT_PUBLIC_DATABASE_URL;
+
 function generateProductStar(count: number) {
   return [1, 2, 3, 4, 5].map((num) => {
     if (Math.ceil(count) >= num) {
@@ -46,7 +48,7 @@ export default function ProductCard({
         <Image
           width={160}
           height={250}
-          src={"http://localhost:1337" + image}
+          src={Server + image}
           alt="Product Image"
           className="h-[250px] w-[160px] aspect-auto"
         />

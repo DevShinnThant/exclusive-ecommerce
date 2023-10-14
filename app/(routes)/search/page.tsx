@@ -1,7 +1,109 @@
-export default function Search({
+import { generateProductQueryString } from "@/lib/utils";
+import CategoryBar from "./components/CategoryBar";
+import axios from "@/lib/api/axios";
+import { ProductSelector } from "@/lib/store/server/product/selectors";
+import ProductSection from "./components/ProductSection";
+import SortBar from "./components/SortBar";
+import { Suspense } from "react";
+import SearchProductLoading from "./loading";
+
+async function fetchProducts(props: {
+  tag: "productName" | "category" | "sort";
+  productName: string;
+  category: {
+    name: string;
+  };
+  sort?: {
+    varaible: string;
+    value: string;
+  };
+}) {
+  await new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("success");
+    }, 1000);
+  });
+
+  let queryString: string;
+
+  if (props.tag === "category" && props.category) {
+    {
+      queryString = generateProductQueryString({
+        filters: {
+          slug: {
+            name: "category",
+            value: props.category?.name,
+          },
+          deep: {
+            columnName: "Name",
+          },
+        },
+      });
+    }
+  } else if (props.tag === "sort" && props.sort) {
+    {
+      queryString = generateProductQueryString({
+        filters: {
+          slug: {
+            name: "category",
+            value: props.category?.name,
+          },
+          property: "$contains",
+        },
+      });
+    }
+  } else {
+    {
+      queryString = generateProductQueryString({
+        filters: {
+          slug: {
+            name: "name",
+            value: props.productName,
+          },
+          property: "$contains",
+        },
+      });
+    }
+  }
+
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_DATABASE_URL}/${queryString}`
+  );
+  const data = ProductSelector(response.data.data);
+
+  return data;
+}
+
+export default async function Search({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-  return <div>Search</div>;
+  const { q, tag, name } = searchParams as { [key: string]: string };
+
+  const products = await fetchProducts({
+    tag: tag === "category" ? "category" : "productName",
+    productName: q,
+    category: {
+      name,
+    },
+  });
+
+  return (
+    <main className="w-full bg-neutral-50 pt-10 pb-[220px]">
+      <div className="w-5/6 m-auto flex gap-[80px]">
+        <div className="w-[100px]">
+          <CategoryBar />
+        </div>
+        <div className="flex-1">
+          <Suspense fallback={<SearchProductLoading />}>
+            <ProductSection products={products} searchQuery={q || name} />
+          </Suspense>
+        </div>
+        <div className="w-[114px]">
+          <SortBar />
+        </div>
+      </div>
+    </main>
+  );
 }

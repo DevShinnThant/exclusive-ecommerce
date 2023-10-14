@@ -18,9 +18,13 @@ export default function SearchInput() {
     const newParams = new URLSearchParams(searchParams.toString());
 
     if (input.value) {
+      newParams.delete("tag");
+      newParams.delete("name");
       newParams.set("q", input.value);
     } else {
       newParams.delete("q");
+      newParams.delete("tag");
+      newParams.delete("name");
     }
 
     const paramsString = newParams.toString();
