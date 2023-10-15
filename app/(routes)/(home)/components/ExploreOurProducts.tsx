@@ -7,6 +7,7 @@ import CategoryTitle from "@/components/layout/CategotyTitle";
 import { useGetProducts } from "@/lib/store/server/product/queries";
 import ProductSkeleton from "@/components/skeletons/ProductSkeleton";
 import ProductCard from "@/components/ProductCard";
+import Link from "next/link";
 
 export default function ExploreOurProducts() {
   const { isLoading, data } = useGetProducts({
@@ -43,9 +44,12 @@ export default function ExploreOurProducts() {
       </div>
 
       <div className="flex mt-10 justify-center">
-        <Button className="text-xs border-none w-[200px] rounded-md px-10 m-auto py-5 bg-button_two">
+        <Link
+          href="/search/all"
+          className="text-xs text-white border-none w-[180px] rounded-md px-8 m-auto py-3 bg-button_two"
+        >
           View All Products
-        </Button>
+        </Link>
       </div>
     </section>
   );

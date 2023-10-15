@@ -44,7 +44,7 @@ export default function ProductCard({
   return (
     <div className="col-span-3 cursor-pointer flex flex-col">
       {/* Image */}
-      <div className="relative group bg-secondary rounded-sm flex items-center justify-center">
+      <div className="relative group bg-secondary rounded-sm flex items-center justify-center transition-opacity animate-fade-in">
         <Image
           width={160}
           height={250}

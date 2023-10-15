@@ -5,12 +5,6 @@ import { ProductSelector } from "@/lib/store/server/product/selectors";
 import { generateProductQueryString } from "@/lib/utils";
 
 async function fetchProducts(name: string) {
-  await new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve("success");
-    }, 2000);
-  });
-
   const queryString =
     name === "all"
       ? "api/products?populate=*"

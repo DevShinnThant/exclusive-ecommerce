@@ -4,8 +4,6 @@ import axios from "@/lib/api/axios";
 import { ProductSelector } from "@/lib/store/server/product/selectors";
 import ProductSection from "../components/ProductSection";
 import SortBar from "../components/SortBar";
-import { Suspense } from "react";
-import SearchProductLoading from "./loading";
 
 async function fetchProducts(props: {
   tag: "productName" | "category" | "sort";
@@ -84,15 +82,13 @@ export default async function Search({
   });
 
   return (
-    <main className="w-full bg-neutral-50 pt-10 pb-[220px]">
+    <main className="w-full min-h-[650px] bg-neutral-50 pt-10 pb-[220px]">
       <div className="w-5/6 m-auto flex gap-[80px]">
         <div className="w-[100px]">
           <CategoryBar />
         </div>
         <div className="flex-1">
-          <Suspense fallback={<SearchProductLoading />}>
-            <ProductSection products={products} searchQuery={q || name} />
-          </Suspense>
+          <ProductSection products={products} searchQuery={q || name} />
         </div>
         <div className="w-[114px]">
           <SortBar />

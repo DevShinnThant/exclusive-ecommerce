@@ -25,7 +25,7 @@ export default function NewArrival() {
               Black and White version of the PS5 coming out on sale.
             </div>
             <Link
-              href="/"
+              href="/search/controller"
               className="text-primary text-sm underline underline-offset-4 px-0"
             >
               Shop Now
@@ -49,7 +49,7 @@ export default function NewArrival() {
               Featured woman collections that give you another vibe.
             </div>
             <Link
-              href="/"
+              href="/search/women_collection"
               className="text-primary text-sm underline underline-offset-4 px-0"
             >
               Shop Now
@@ -74,7 +74,7 @@ export default function NewArrival() {
                 Amazon wireless speakers
               </div>
               <Link
-                href="/"
+                href="/search/speaker"
                 className="text-primary text-sm underline underline-offset-4 px-0"
               >
                 Shop Now
@@ -98,7 +98,7 @@ export default function NewArrival() {
                 GUCCI INTENSE OUD EDP
               </div>
               <Link
-                href="/"
+                href="/search/perfume"
                 className="text-primary text-sm underline underline-offset-4 px-0"
               >
                 Shop Now

@@ -1,5 +1,4 @@
 import { Product } from "@/lib/store/server/product/types";
-import Image from "next/image";
 import SearchProductCard from "./SearchProductCard";
 
 interface Props {
