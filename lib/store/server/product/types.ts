@@ -10,6 +10,7 @@ export interface ProductResponse {
     updatedAt: Date;
     publishedAt: Date;
     voting: number;
+    desciption: null | string;
     category: {
       data: {
         id: number;
@@ -22,28 +23,61 @@ export interface ProductResponse {
       };
     };
     images: {
-      data:
-        | {
-            id: number;
-            attributes: {
+      data: {
+        id: number;
+        attributes: {
+          name: string;
+          alternativeText: null;
+          caption: null;
+          width: number;
+          height: number;
+          formats: {
+            thumbnail: {
               name: string;
-              alternativeText: null;
-              caption: null;
+              hash: string;
+              ext: ".svg" | ".jpeg";
+              mime: "image/svg+xml" | "image/jpeg";
+              path: null;
               width: number;
               height: number;
-              formats: null;
-              hash: string;
-              ext: string;
-              mime: string;
               size: number;
               url: string;
-              previewUrl: null;
-              provider: string;
-              provider_metadata: null;
-              createdAt: Date;
-              updatedAt: Date;
             };
-          }[];
+            small: {
+              name: string;
+              hash: string;
+              ext: ".svg" | ".jpeg";
+              mime: "image/svg+xml" | "image/jpeg";
+              path: null;
+              width: number;
+              height: number;
+              size: number;
+              url: string;
+            };
+            medium?: {
+              name: string;
+              hash: string;
+              ext: ".svg" | ".jpeg";
+              mime: "image/svg+xml" | "image/jpeg";
+              path: null;
+              width: number;
+              height: number;
+              size: number;
+              url: string;
+            };
+          } | null;
+          hash: string;
+          ext: ".svg" | ".jpeg";
+          mime: "image/svg+xml" | "image/jpeg";
+          size: number;
+          url: string;
+          previewUrl: null;
+          provider: "local";
+          provider_metadata: null;
+          createdAt: Date;
+          updatedAt: Date;
+        };
+      }[];
     };
   };
 }

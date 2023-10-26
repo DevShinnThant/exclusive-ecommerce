@@ -1,12 +1,10 @@
-"use client";
-
 import { Product } from "@/lib/store/server/product/types";
 import { EyeOpenIcon, HeartIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-import { Button } from "./ui/button";
 import HalfStarIcon from "@/app/icons/HalfStar";
 import FullStarIcon from "@/app/icons/FullStar";
 import EmptyStarIcon from "@/app/icons/EmptyStar";
+import Link from "next/link";
 
 const Server = process.env.NEXT_PUBLIC_DATABASE_URL;
 
@@ -41,8 +39,13 @@ export default function ProductCard({
 }: {
   product: Product;
 }) {
+  console.log(Server, image, "image");
+
   return (
-    <div className="col-span-3 cursor-pointer flex flex-col">
+    <Link
+      href={`/product/${name}`}
+      className="col-span-3 cursor-pointer flex flex-col"
+    >
       {/* Image */}
       <div className="relative group bg-secondary rounded-sm flex items-center justify-center transition-opacity animate-fade-in">
         <Image
@@ -80,6 +83,6 @@ export default function ProductCard({
         </div>
         <div className="text-sm text-text_one">({voting})</div>
       </div>
-    </div>
+    </Link>
   );
 }

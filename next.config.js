@@ -3,10 +3,16 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // images: {
-  //   deviceSizes: [640, 768, 1024, 1280, 1600],
-  //   imageSizes: [16, 32, 48, 64, 96],
-  // },
+  images: {
+    domains: ["127.0.0.1"],
+    remotePatterns: [
+      {
+        protocol: "http",
+        hostname: "http://127.0.0.1",
+        port: "1337",
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
