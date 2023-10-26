@@ -2,7 +2,7 @@ export interface ProductResponse {
   id: number;
   attributes: {
     name: string;
-    price: number;
+    price: number | null;
     dis_price: number;
     rating: number;
     variant: string;
@@ -10,28 +10,40 @@ export interface ProductResponse {
     updatedAt: Date;
     publishedAt: Date;
     voting: number;
-    image: {
+    category: {
       data: {
         id: number;
         attributes: {
-          name: string;
-          alternativeText: null;
-          caption: null;
-          width: number;
-          height: number;
-          formats: null;
-          hash: string;
-          ext: string;
-          mime: string;
-          size: number;
-          url: string;
-          previewUrl: null;
-          provider: string;
-          provider_metadata: null;
+          Name: string;
           createdAt: Date;
           updatedAt: Date;
+          publishedAt: Date;
         };
-      }[];
+      };
+    };
+    images: {
+      data:
+        | {
+            id: number;
+            attributes: {
+              name: string;
+              alternativeText: null;
+              caption: null;
+              width: number;
+              height: number;
+              formats: null;
+              hash: string;
+              ext: string;
+              mime: string;
+              size: number;
+              url: string;
+              previewUrl: null;
+              provider: string;
+              provider_metadata: null;
+              createdAt: Date;
+              updatedAt: Date;
+            };
+          }[];
     };
   };
 }

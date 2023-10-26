@@ -61,13 +61,6 @@ export default function ProductCard({
             <EyeOpenIcon />
           </div>
         </div>
-
-        <Button
-          variant="outline"
-          className="text-sm rounded-b-md rounded-t-none transition-all group-hover:opacity-100 group-hover:right-0 bottom-0 absolute right-[-60px] opacity-0 w-full"
-        >
-          Add To Cart
-        </Button>
       </div>
       {/* End */}
       <div className="mt-3">

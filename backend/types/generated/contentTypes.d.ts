@@ -412,7 +412,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     variant: Attribute.Enumeration<['best_selling', 'normal', 'general']> &
       Attribute.DefaultTo<'normal'>;
-    image: Attribute.Media & Attribute.Required;
+    images: Attribute.Media & Attribute.Required;
     price: Attribute.Float;
     dis_price: Attribute.Float & Attribute.Required;
     voting: Attribute.Integer & Attribute.Required;

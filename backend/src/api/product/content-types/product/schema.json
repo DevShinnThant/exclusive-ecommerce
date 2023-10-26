@@ -32,7 +32,7 @@
       "required": false,
       "default": "normal"
     },
-    "image": {
+    "images": {
       "type": "media",
       "multiple": true,
       "required": true,

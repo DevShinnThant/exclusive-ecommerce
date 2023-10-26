@@ -6,12 +6,12 @@ export const ProductSelector = (data: ProductResponse[]) => {
     return {
       id: item.id,
       name: itemAttributes.name,
-      price: itemAttributes.price,
+      price: itemAttributes.price || 0,
       dis_price: itemAttributes.dis_price,
       rating: itemAttributes.rating,
       variant: itemAttributes.variant,
       voting: itemAttributes.voting,
-      image: itemAttributes.image.data[0].attributes.url,
+      image: itemAttributes?.images?.data[0]?.attributes?.url || "",
     };
   });
 };
