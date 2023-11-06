@@ -1,6 +1,5 @@
 "use client";
 
-import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 
 import CategoryTitle from "@/components/layout/CategotyTitle";
@@ -8,6 +7,7 @@ import { useGetProducts } from "@/lib/store/server/product/queries";
 import ProductSkeleton from "@/components/skeletons/ProductSkeleton";
 import ProductCard from "@/components/ProductCard";
 import Link from "next/link";
+import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 
 export default function ExploreOurProducts() {
   const { isLoading, data } = useGetProducts({

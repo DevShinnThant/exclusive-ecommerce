@@ -11,7 +11,7 @@ export const ProductSelector = (data: ProductResponse[]) => {
       rating: itemAttributes.rating,
       variant: itemAttributes.variant,
       voting: itemAttributes.voting,
-      image: itemAttributes?.images?.data[0]?.attributes?.url || "",
+      image: itemAttributes?.images?.data?.[0]?.attributes?.url || "",
     };
   });
 };

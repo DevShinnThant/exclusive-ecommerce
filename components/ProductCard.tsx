@@ -1,10 +1,10 @@
 import { Product } from "@/lib/store/server/product/types";
-import { EyeOpenIcon, HeartIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
-import HalfStarIcon from "@/app/icons/HalfStar";
-import FullStarIcon from "@/app/icons/FullStar";
-import EmptyStarIcon from "@/app/icons/EmptyStar";
+import HalfStarIcon from "@/app/icons/product/HalfStar";
+import FullStarIcon from "@/app/icons/product/FullStar";
+import EmptyStarIcon from "@/app/icons/product/EmptyStar";
 import Link from "next/link";
+import { EyeOpenIcon, HeartIcon } from "@radix-ui/react-icons";
 
 const Server = process.env.NEXT_PUBLIC_DATABASE_URL;
 
@@ -39,8 +39,6 @@ export default function ProductCard({
 }: {
   product: Product;
 }) {
-  console.log(Server, image, "image");
-
   return (
     <Link
       href={`/product/${name}`}
@@ -48,13 +46,15 @@ export default function ProductCard({
     >
       {/* Image */}
       <div className="relative group bg-secondary rounded-sm flex items-center justify-center transition-opacity animate-fade-in">
-        <Image
-          width={160}
-          height={250}
-          src={Server + image}
-          alt="Product Image"
-          className="h-[250px] w-[160px] aspect-auto"
-        />
+        {image && (
+          <Image
+            width={160}
+            height={250}
+            src={Server + image}
+            alt="Product Image"
+            className="h-[250px] w-[160px] aspect-auto"
+          />
+        )}
 
         <div className="absolute flex flex-col gap-1.5 justify-center items-center right-2 top-2">
           <div className="bg-primary cursor-pointer w-8 h-8 rounded-full flex items-center justify-center">

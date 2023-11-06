@@ -1,8 +1,11 @@
 import Image from "next/image";
 import { Input } from "../ui/input";
 
-import QRImage from "@/public/images/QRImage.svg";
-import { FiFacebook, FiInstagram, FiLinkedin, FiTwitter } from "react-icons/fi";
+import QRImage from "@/public/images/qr.png";
+import FacebookIcon from "@/app/icons/organization/Facebook";
+import TwitterIcon from "@/app/icons/organization/Twitter";
+import InstagramIcon from "@/app/icons/organization/Instagram";
+import LinkedinIcon from "@/app/icons/organization/Linkedin";
 
 export default function Footer() {
   return (
@@ -40,10 +43,10 @@ export default function Footer() {
           <div className="my-4 text-xs">Save $3 with App New User Only</div>
           <Image width={200} height={50} src={QRImage} alt="Website QR" />
           <div className="mt-4 flex items-center gap-6">
-            <FiFacebook size={20} />
-            <FiTwitter size={20} />
-            <FiInstagram size={20} />
-            <FiLinkedin size={20} />
+            <FacebookIcon />
+            <TwitterIcon />
+            <InstagramIcon />
+            <LinkedinIcon />
           </div>
         </div>
         <div className="col-span-10">

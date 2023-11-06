@@ -1,6 +1,6 @@
 "use client";
 
-import { FiSearch } from "react-icons/fi";
+// import { FiSearch } from "react-icons/fi";
 import { Input } from "./ui/input";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent } from "react";
@@ -48,7 +48,7 @@ export default function SearchInput() {
           autoComplete="off"
           className="bg-none text-xs tracking-wide shadow-none border-none focus-visible:ring-0"
         />
-        <FiSearch size={20} />
+        {/* <FiSearch size={20} /> */}
       </div>
     </form>
   );

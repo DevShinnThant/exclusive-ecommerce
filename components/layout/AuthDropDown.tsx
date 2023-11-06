@@ -10,13 +10,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { PersonIcon } from "@radix-ui/react-icons";
 import { Button } from "../ui/button";
 import { useAuth } from "@/lib/hooks/useAuth";
 import { useToast } from "../ui/use-toast";
 import Link from "next/link";
 import { useAuthLogout } from "@/lib/store/server/auth/mutations";
 import { useAuthStore } from "@/lib/store/client/authStore";
+import UserIcon from "@/app/icons/navbar/User";
 
 export default function AuthDropDown() {
   const { token } = useAuthStore();
@@ -29,13 +29,8 @@ export default function AuthDropDown() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          name="setting"
-          aria-label="Auth Setting Icon"
-          variant="ghost"
-          className="p-[10px] bg-secondary rounded-full"
-        >
-          <PersonIcon className="cursor-pointer w-4 h-4" />
+        <Button name="setting" aria-label="Auth Setting Icon" variant="ghost">
+          <UserIcon />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>

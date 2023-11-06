@@ -16,8 +16,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { FiMail } from "react-icons/fi";
-import { PiPhoneCall } from "react-icons/pi";
+// import { FiMail } from "react-icons/fi";
+// import { PiPhoneCall } from "react-icons/pi";
 
 import { z } from "zod";
 const contactFormSchema = z.object({
@@ -60,7 +60,7 @@ export default function Contact() {
           <CardContent>
             <div className="flex items-center gap-4 mb-3">
               <div className="w-9 h-9 rounded-full bg-secondary_two flex items-center text-white justify-center">
-                <PiPhoneCall />
+                {/* <PiPhoneCall /> */}
               </div>
               <div className="font-medium tracking-wide text-sm">
                 Call To Us
@@ -73,7 +73,7 @@ export default function Contact() {
             <Separator className="mt-8" />
             <div className="flex py-6 items-center gap-4">
               <div className="w-9 h-9 rounded-full bg-secondary_two flex items-center text-white justify-center">
-                <FiMail />
+                {/* <FiMail /> */}
               </div>
               <div className="font-medium tracking-wide text-sm">
                 Write To Us

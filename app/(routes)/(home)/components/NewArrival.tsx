@@ -12,9 +12,9 @@ export default function NewArrival() {
       <div className="col-span-3 rounded-md relative row-span-2 bg-button">
         <div className="flex justify-center p-10">
           <Image
-            loading="lazy"
             className="w-[380px] absolute bottom-0"
             src={PlaystationImage}
+            priority
             alt="Playstaion Category"
           />
           <div className="absolute bottom-0 my-8 left-0 px-8 w-[300px]">
@@ -36,8 +36,8 @@ export default function NewArrival() {
       <div className="col-span-3 row-span-1 rounded-md relative bg-button">
         <div className="flex justify-center p-10">
           <Image
-            loading="lazy"
-            className="w-[380px] h-[238px] absolute bottom-0 left-40"
+            priority
+            className="absolute bottom-0 left-40"
             src={WomanImage}
             alt="Woman Accessory Category"
           />
@@ -61,7 +61,7 @@ export default function NewArrival() {
         <div className="col-span-3 relative rounded-md bg-button">
           <div className="flex justify-center p-10">
             <Image
-              loading="lazy"
+              priority
               className="w-32 absolute bottom-10"
               src={SpeakerImage}
               alt="Speaker Category"

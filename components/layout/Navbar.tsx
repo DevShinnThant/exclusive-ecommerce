@@ -1,8 +1,11 @@
 // Icons
-import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+
 import SearchInput from "../SearchInput";
 import Link from "next/link";
 import AuthDropDown from "./AuthDropDown";
+import WishlistIcon from "@/app/icons/navbar/Wishlist";
+import CartIcon from "@/app/icons/navbar/Cart";
+import UserIcon from "@/app/icons/navbar/User";
 
 export default function Navbar() {
   return (
@@ -26,8 +29,8 @@ export default function Navbar() {
           <div className="col-span-4 flex justify-end items-center gap-6">
             <SearchInput />
             <div className="cursor-pointer flex items-center gap-5">
-              <AiOutlineHeart color="black" size={25} />
-              <AiOutlineShoppingCart size={25} />
+              <WishlistIcon />
+              <CartIcon />
             </div>
           </div>
         </div>

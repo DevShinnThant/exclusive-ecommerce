@@ -1,12 +1,16 @@
 "use client";
 
-import CategoryTitle from "@/components/layout/CategotyTitle";
 // Icons
-import { BsPhone } from "react-icons/bs";
-import { HiOutlineComputerDesktop } from "react-icons/hi2";
-import { IoWatchOutline, IoGameControllerOutline } from "react-icons/io5";
-import { FiCamera } from "react-icons/fi";
-import { PiHeadphones } from "react-icons/pi";
+import CameraIcon from "@/app/icons/category/Camera";
+import ComputerIcon from "@/app/icons/category/Computer";
+import ControllerIcon from "@/app/icons/category/Controller";
+import HeadphoneIcon from "@/app/icons/category/Headphone";
+import PhoneIcon from "@/app/icons/category/Phone";
+import SmartWatchIcon from "@/app/icons/category/SmartWatch";
+
+import CategoryTitle from "@/components/layout/CategotyTitle";
+
+// Hooks
 import { useRouter } from "next/navigation";
 
 export default function BrowseByCategory() {
@@ -44,36 +48,36 @@ const categories: {
     id: 0,
     name: "Phones",
     value: "phone",
-    icon: <BsPhone size={30} />,
+    icon: <PhoneIcon />,
   },
   {
     id: 1,
     name: "Computers",
     value: "computer",
-    icon: <HiOutlineComputerDesktop size={30} />,
+    icon: <ComputerIcon />,
   },
   {
     id: 2,
     name: "SmartWatches",
     value: "smart_watch",
-    icon: <IoWatchOutline size={30} />,
+    icon: <SmartWatchIcon />,
   },
   {
     id: 3,
     name: "Cameras",
     value: "camera",
-    icon: <FiCamera size={30} />,
+    icon: <CameraIcon />,
   },
   {
     id: 4,
     name: "HeadPhones",
     value: "headPhone",
-    icon: <PiHeadphones size={30} />,
+    icon: <HeadphoneIcon />,
   },
   {
     id: 5,
     name: "Controllers",
     value: "controller",
-    icon: <IoGameControllerOutline size={30} />,
+    icon: <ControllerIcon />,
   },
 ];

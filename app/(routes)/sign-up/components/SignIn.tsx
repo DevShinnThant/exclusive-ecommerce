@@ -16,8 +16,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 // Icons
-import GoogleIcon from "@/app/icons/Google";
-import { ReloadIcon } from "@radix-ui/react-icons";
+import GoogleIcon from "@/app/icons/organization/Google";
+// import { ReloadIcon } from "@radix-ui/react-icons";
 
 // Hooks
 import { useAuthLogin } from "@/lib/store/server/auth/mutations";
@@ -100,9 +100,9 @@ export default function SignIn() {
             className="w-full mt-2 h-10 bg-button_two hover:bg-button_hover"
             type="submit"
           >
-            {signInMutator.isLoading && (
+            {/* {signInMutator.isLoading && (
               <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-            )}{" "}
+            )}{" "} */}
             Sign In
           </Button>
 

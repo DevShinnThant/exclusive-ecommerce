@@ -1,4 +1,6 @@
-import { BsCarFrontFill, BsHeadphones, BsShieldCheck } from "react-icons/bs";
+import CustomerServiceIcon from "@/app/icons/service/CustomerService";
+import DeliveryIcon from "@/app/icons/service/Delivery";
+import ShieldTickIcon from "@/app/icons/service/ShieldTick";
 
 export default function CustomerService() {
   return (
@@ -6,7 +8,7 @@ export default function CustomerService() {
       <div className="flex flex-col gap-5 items-center">
         <div className="w-20 h-20 flex items-center justify-center rounded-full bg-gray-300">
           <div className="w-16 h-16 text-white text-3xl flex items-center justify-center rounded-full bg-button">
-            <BsCarFrontFill />
+            <DeliveryIcon />
           </div>
         </div>
         <div className="text-md tracking-wide font-medium">
@@ -19,7 +21,7 @@ export default function CustomerService() {
       <div className="flex flex-col gap-5 items-center">
         <div className="w-20 h-20 flex items-center justify-center rounded-full bg-gray-300">
           <div className="w-16 h-16 text-white text-3xl flex items-center justify-center rounded-full bg-button">
-            <BsHeadphones />
+            <CustomerServiceIcon />
           </div>
         </div>
         <div className="text-md tracking-wide font-medium">
@@ -33,7 +35,7 @@ export default function CustomerService() {
       <div className="flex flex-col gap-5 items-center">
         <div className="w-20 h-20 flex items-center justify-center rounded-full bg-gray-300">
           <div className="w-16 h-16 text-white text-3xl flex items-center justify-center rounded-full bg-button">
-            <BsShieldCheck />
+            <ShieldTickIcon />
           </div>
         </div>
         <div className="text-md tracking-wide font-medium">

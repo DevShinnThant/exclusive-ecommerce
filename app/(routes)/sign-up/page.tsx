@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import AuthCover from "@/public/images/Side Image.svg";
+import AuthCover from "@/public/images/side-image.png";
 import AuthForm from "./components/AuthForm";
 
 export const metadata = {

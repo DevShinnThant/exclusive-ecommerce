@@ -26,7 +26,6 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
-    "react-icons": "^4.11.0",
     "react-query": "^3.39.3",
     "strapi-sdk-js": "^2.3.3",
     "tailwind-merge": "^1.14.0",

@@ -17,6 +17,8 @@ async function getProduct(name: string) {
   );
   console.log(response.data.data);
 
+  const data = response.data.data[0];
+
   // id?
   // size ?
   // color ?
@@ -36,7 +38,7 @@ export default async function ProductDetail({
   return (
     <div className="mx-auto max-w-screen-2xl w-full bg-gray-500 px-4">
       <div className="flex items-center gap-6">
-        <div className="flex-1"></div>
+        <div className="flex-1">{/* <Image /> */}</div>
         <div className="flex-1">Description</div>
       </div>
     </div>

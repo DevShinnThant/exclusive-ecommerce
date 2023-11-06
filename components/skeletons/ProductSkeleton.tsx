@@ -1,4 +1,4 @@
-import EmptyStarIcon from "@/app/icons/EmptyStar";
+import EmptyStarIcon from "@/app/icons/product/EmptyStar";
 import { Skeleton } from "@/components/ui/skeleton";
 
 export default function ProductSkeleton() {

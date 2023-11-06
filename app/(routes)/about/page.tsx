@@ -3,9 +3,9 @@ import Link from "next/link";
 
 import CoverImage from "@/public/images/about-cover.png";
 
-import { BsGift, BsShop } from "react-icons/bs";
-import { FiDollarSign } from "react-icons/fi";
-import { FaSackDollar } from "react-icons/fa6";
+// import { BsGift, BsShop } from "react-icons/bs";
+// import { FiDollarSign } from "react-icons/fi";
+// import { FaSackDollar } from "react-icons/fa6";
 import React from "react";
 import CustomerService from "../(home)/components/CustomerService";
 
@@ -49,7 +49,7 @@ export default function About() {
       <CustomerService />
 
       <div className="flex mt-24 items-center gap-4">
-        {items.map(({ id, count, label, icon: Icon }) => (
+        {/* {items.map(({ id, count, label, icon: Icon }) => (
           <div
             key={id}
             className="border group hover:bg-button_two transition-all cursor-pointer rounded-md flex-1 flex flex-col justify-center items-center gap-5 p-10 border-gray-500"
@@ -66,40 +66,40 @@ export default function About() {
               {label}
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );
 }
 
-const items: {
-  id: number;
-  count: number;
-  label: string;
-  icon: JSX.Element;
-}[] = [
-  {
-    id: 0,
-    count: 10.5,
-    label: "Sellers active our site",
-    icon: <BsShop />,
-  },
-  {
-    id: 1,
-    count: 33,
-    label: "Monthly Product Sale",
-    icon: <FiDollarSign />,
-  },
-  {
-    id: 2,
-    count: 45.5,
-    label: "Customer active in our site",
-    icon: <BsGift />,
-  },
-  {
-    id: 3,
-    count: 25,
-    label: "Annual gross sale in our site",
-    icon: <FaSackDollar />,
-  },
-];
+// const items: {
+//   id: number;
+//   count: number;
+//   label: string;
+//   icon: JSX.Element;
+// }[] = [
+//   {
+//     id: 0,
+//     count: 10.5,
+//     label: "Sellers active our site",
+//     icon: <BsShop />,
+//   },
+//   {
+//     id: 1,
+//     count: 33,
+//     label: "Monthly Product Sale",
+//     icon: <FiDollarSign />,
+//   },
+//   {
+//     id: 2,
+//     count: 45.5,
+//     label: "Customer active in our site",
+//     icon: <BsGift />,
+//   },
+//   {
+//     id: 3,
+//     count: 25,
+//     label: "Annual gross sale in our site",
+//     icon: <FaSackDollar />,
+//   },
+// ];
