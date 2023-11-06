@@ -1,6 +1,7 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { ProductQuery } from "./store/server/product/types";
+import { ReadonlyURLSearchParams } from "next/navigation";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -22,4 +23,13 @@ export function generateProductQueryString(payload: ProductQuery) {
   }`;
 
   return queryString;
+}
+
+export function createURL(
+  params: URLSearchParams | ReadonlyURLSearchParams,
+  pathname: string
+) {
+  const paramString = params.toString();
+  const query = `${paramString.length ? "?" : ""}${paramString}`;
+  return `${pathname}${query}`;
 }

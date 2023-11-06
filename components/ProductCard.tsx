@@ -45,14 +45,14 @@ export default function ProductCard({
       className="col-span-3 cursor-pointer flex flex-col"
     >
       {/* Image */}
-      <div className="relative group bg-secondary rounded-sm flex items-center justify-center transition-opacity animate-fade-in">
+      <div className="relative group bg-secondary h-[250px]   rounded-sm flex items-center justify-center transition-opacity animate-fade-in">
         {image && (
           <Image
             width={160}
             height={250}
             src={Server + image}
             alt="Product Image"
-            className="h-[250px] w-[160px] aspect-auto"
+            className="aspect-auto"
           />
         )}
 
@@ -69,10 +69,12 @@ export default function ProductCard({
       <div className="mt-3">
         <div className="text-sm">{name}</div>
         <div className="text-sm flex gap-2 items-center my-2">
-          {dis_price && <span className="text-button_two">${dis_price}</span>}
-          {price && (
-            <span className="text-text_one line-through ">${price}</span>
+          {dis_price && (
+            <span className="text-button_two font-semibold">${dis_price}</span>
           )}
+          {price ? (
+            <span className="text-text_one line-through ">${price}</span>
+          ) : null}
         </div>
       </div>
 

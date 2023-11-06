@@ -31,7 +31,10 @@ export function SelectCategory({ disabled = false }: { disabled?: boolean }) {
         }
       }}
     >
-      <SelectTrigger className="w-[200px] focus:inset-0 focus:ring-0 focus:appearance-none rounded-sm">
+      <SelectTrigger
+        aria-label="select-category"
+        className="w-[200px] focus:inset-0 focus:ring-0 focus:appearance-none rounded-sm"
+      >
         <SelectValue placeholder="Select Category" />
       </SelectTrigger>
       <SelectContent>
