@@ -10,6 +10,8 @@ const fetchProducts = async (
 ): Promise<GetResponse<ProductResponse>> => {
   const queryString = generateProductQueryString(payload);
   const response = await axios.get(queryString);
+  // console.log(response.data);
+
   return response.data;
 };
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { ProductImageResponse } from "@/lib/store/server/product/types";
 import { cn, createURL } from "@/lib/utils";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
@@ -9,7 +10,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 const Server = process.env.NEXT_PUBLIC_DATABASE_URL;
 
 interface Props {
-  images: any;
+  images: ProductImageResponse;
 }
 
 export default function Gallery({ images }: Props) {

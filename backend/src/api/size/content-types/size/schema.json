@@ -11,16 +11,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "size": {
+    "name": {
       "type": "enumeration",
       "enum": [
         "xs",
         "sm",
-        "m",
-        "l",
+        "md",
+        "lg",
         "xl",
-        "xxl",
-        "xxxl"
+        "xxl"
       ]
     }
   }

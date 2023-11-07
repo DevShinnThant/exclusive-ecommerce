@@ -7,10 +7,15 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function generateProductQueryString(payload: ProductQuery) {
+export function generateProductQueryString(
+  payload: ProductQuery,
+  isDetail: boolean = false
+) {
   const { filters, pagination } = payload;
 
-  const queryString = `api/products?${
+  const queryString = `${
+    isDetail ? "api/product-size-colors" : "api/products"
+  }?${
     filters
       ? `filters[${filters.slug.name}]${
           filters.deep ? `[${filters.deep.columnName}]` : ""
