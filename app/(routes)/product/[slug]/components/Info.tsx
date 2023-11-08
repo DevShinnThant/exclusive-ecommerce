@@ -15,7 +15,7 @@ export default function ProductInfo({ product }: Props) {
         ${productData.dis_price} USD
       </div>
       <div className="w-full h-[0.01px] border border-gray-500" />
-      <Variant productName={productData.name} />
+      <Variant product={product} />
     </div>
   );
 }

@@ -64,6 +64,16 @@
     "desciption": {
       "type": "text",
       "required": false
+    },
+    "sizes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::size.size"
+    },
+    "colors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::color.color"
     }
   }
 }

@@ -768,6 +768,16 @@ export interface ApiProductProduct extends Schema.CollectionType {
         max: 5;
       }>;
     desciption: Attribute.Text;
+    sizes: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::size.size'
+    >;
+    colors: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::color.color'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

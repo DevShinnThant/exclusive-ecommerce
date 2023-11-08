@@ -79,6 +79,30 @@ export interface ProductResponse {
         };
       }[];
     };
+    colors: {
+      data: {
+        id: number;
+        attributes: {
+          Name?: string;
+          createdAt: Date;
+          updatedAt: Date;
+          publishedAt: Date;
+          name?: string;
+        };
+      }[];
+    };
+    sizes: {
+      data: {
+        id: number;
+        attributes: {
+          Name?: string;
+          createdAt: Date;
+          updatedAt: Date;
+          publishedAt: Date;
+          name?: string;
+        };
+      }[];
+    };
   };
 }
 
