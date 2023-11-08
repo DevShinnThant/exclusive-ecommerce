@@ -17,7 +17,11 @@ export function generateProductQueryString(
     isDetail ? "api/product-size-colors" : "api/products"
   }?${
     filters
-      ? `filters[${filters.slug.name}]${
+      ? `${
+          filters.notEqual
+            ? `filters[${filters.notEqual.name}][${filters.notEqual.slug}]=${filters.notEqual.value}&`
+            : ""
+        }filters[${filters.slug.name}]${
           filters.deep ? `[${filters.deep.columnName}]` : ""
         }[${filters.property || "$eq"}]=${filters.slug.value}&populate=*`
       : ""

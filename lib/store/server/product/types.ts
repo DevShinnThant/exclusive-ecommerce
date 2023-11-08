@@ -182,6 +182,11 @@ export interface ProductQuery {
       value: string;
     };
     property?: string;
+    notEqual?: {
+      slug: string;
+      name: string;
+      value: string;
+    };
     deep?: {
       columnName: string;
     };
