@@ -110,7 +110,7 @@ export default function Variant({ product }: { product: ProductResponse }) {
         </div>
       </div>
 
-      <div className="text-white text-xs tracking-wide">
+      <div className="text-gray-400 my-2 text-xs tracking-wide">
         {product.attributes.desciption}.
       </div>
     </div>

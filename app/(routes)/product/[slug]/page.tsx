@@ -31,7 +31,7 @@ export default async function ProductDetail({
   return (
     <div className="mx-auto py-6 max-w-screen-2xl w-full bg-gray-300 px-4">
       <div className="flex p-10 items-center gap-6 bg-black rounded-md outline outline-gray-400">
-        <div className="flex-1 ">
+        <div className="w-3/4">
           <Gallery images={product.attributes.images} />
         </div>
         <div className="flex-1">
