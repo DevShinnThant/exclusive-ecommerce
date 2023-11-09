@@ -27,7 +27,7 @@ export function generateProductQueryString(
       : ""
   }${
     pagination
-      ? `pagination[page]=${pagination.page}&pagination[limit]=${pagination.limit}`
+      ? `pagination[page]=${pagination.page}&pagination[limit]=${pagination.limit}&populate=*`
       : ""
   }`;
 

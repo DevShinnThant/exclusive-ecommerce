@@ -17,6 +17,9 @@ export default function ExploreOurProducts() {
         value: "normal",
       },
     },
+    pagination: {
+      limit: 4,
+    },
   });
 
   return (
