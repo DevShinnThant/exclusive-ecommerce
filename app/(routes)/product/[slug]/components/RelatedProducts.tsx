@@ -2,6 +2,7 @@ import axios from "@/lib/api/axios";
 import { ProductSelector } from "@/lib/store/server/product/selectors";
 import { generateProductQueryString } from "@/lib/utils";
 import Image from "next/image";
+import Link from "next/link";
 
 const Server = process.env.NEXT_PUBLIC_DATABASE_URL;
 
@@ -43,7 +44,8 @@ export default async function RelatedProducts(props: Props) {
       <div className="text-2xl text-black font-semibold">Related Products</div>
       <div className="flex w-full gap-4 overflow-x-auto pt-8">
         {products.map((product) => (
-          <div
+          <Link
+            href={`/product/${product.name}`}
             key={product.id}
             className="aspect-square group border-[2px] border-gray-700 hover:border-button_two cursor-pointer bg-black rounded-lg relative w-full flex-none min-[475px]:w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/5"
           >
@@ -64,7 +66,7 @@ export default async function RelatedProducts(props: Props) {
                 ${product.dis_price} USD
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </>

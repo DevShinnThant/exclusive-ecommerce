@@ -1,11 +1,15 @@
 import { Product } from "@/lib/store/server/product/types";
 import Image from "next/image";
+import Link from "next/link";
 
 const Server = process.env.NEXT_PUBLIC_DATABASE_URL;
 
 export default function SearchProductCard({ product }: { product: Product }) {
   return (
-    <div className="bg-gray-200 cursor-pointer transition-opacity animate-fade-in pt-8 pb-5 rounded-md">
+    <Link
+      href={`/product/${product.name}`}
+      className="bg-gray-200 cursor-pointer transition-opacity animate-fade-in pt-8 pb-5 rounded-md"
+    >
       <Image
         width={140}
         height={200}
@@ -19,6 +23,6 @@ export default function SearchProductCard({ product }: { product: Product }) {
           ${product.dis_price} USD
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
