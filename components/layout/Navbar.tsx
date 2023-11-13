@@ -31,7 +31,6 @@ export default function Navbar() {
             <SearchInput />
             <div className="cursor-pointer flex items-center gap-5">
               <WishlistIcon />
-
               <CartSlider />
             </div>
           </div>

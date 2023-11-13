@@ -189,7 +189,7 @@ export interface ProductQuery {
     };
     ids?: {
       catcher: string;
-      value: string[];
+      value: number[];
     };
     search?: {
       slug: string;
@@ -198,26 +198,6 @@ export interface ProductQuery {
     };
   };
 
-  // filters?: {
-  //   slug: {
-  //     name: string;
-  //     value: string;
-  //   };
-  //   property?: string;
-  //   notEqual?: {
-  //     slug: string;
-  //     name: string;
-  //     value: string;
-  //   };
-  //   contain?: {
-  //     slug: string;
-
-  //     value: string;
-  //   };
-  //   deep?: {
-  //     columnName: string;
-  //   };
-  // };
   pagination?: {
     page?: number;
     pageSize?: number;
