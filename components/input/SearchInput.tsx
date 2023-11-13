@@ -1,7 +1,7 @@
 "use client";
 
 // import { FiSearch } from "react-icons/fi";
-import { Input } from "./ui/input";
+import { Input } from "../ui/input";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent } from "react";
 

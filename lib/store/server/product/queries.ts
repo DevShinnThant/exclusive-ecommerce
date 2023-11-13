@@ -9,7 +9,10 @@ const fetchProducts = async (
   payload: ProductQuery
 ): Promise<GetResponse<ProductResponse>> => {
   const queryString = generateProductQueryString(payload);
-  const response = await axios.get(queryString);
+
+  console.log(`/products?populate=*&` + queryString);
+
+  const response = await axios.get(`api/products?populate=*&` + queryString);
   // console.log(response.data);
 
   return response.data;

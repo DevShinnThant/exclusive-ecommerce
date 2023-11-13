@@ -7,16 +7,16 @@ import RelatedProducts from "./components/RelatedProducts";
 async function getProduct(name: string) {
   const queryString = generateProductQueryString({
     filters: {
-      slug: {
-        name: "name",
+      search: {
+        slug: "name",
+        catcher: "$contains",
         value: name,
       },
-      property: "$contains",
     },
   });
 
   const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_DATABASE_URL}/${queryString}`
+    `${process.env.NEXT_PUBLIC_DATABASE_URL}/api/products?${queryString}&populate=*`
   );
 
   return response.data.data[0];

@@ -4,14 +4,15 @@ import Link from "next/link";
 
 import CategoryTitle from "@/components/layout/CategotyTitle";
 import { useGetProducts } from "@/lib/store/server/product/queries";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/product/ProductCard";
 import ProductSkeleton from "@/components/skeletons/ProductSkeleton";
 
 export default function BestSellingProducts() {
   const { isLoading, data } = useGetProducts({
     filters: {
-      slug: {
-        name: "variant",
+      search: {
+        slug: "variant",
+        catcher: "$eq",
         value: "best_selling",
       },
     },

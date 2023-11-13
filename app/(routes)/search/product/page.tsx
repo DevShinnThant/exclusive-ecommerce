@@ -22,45 +22,50 @@ async function fetchProducts(props: {
     {
       queryString = generateProductQueryString({
         filters: {
-          slug: {
-            name: "category",
+          category: {
+            slug: "Name",
+            catcher: "$eq",
             value: props.category?.name,
-          },
-          deep: {
-            columnName: "Name",
           },
         },
       });
     }
-  } else if (props.tag === "sort" && props.sort) {
+  }
+  // else if (props.tag === "sort" && props.sort) {
+  //   {
+  //     queryString = generateProductQueryString({
+  //       filters: {
+  //         slug: {
+  //           name: "category",
+  //           value: props.category?.name,
+  //         },
+  //         property: "$contains",
+  //       },
+  //     });
+  //   }
+  // }
+  else {
     {
       queryString = generateProductQueryString({
         filters: {
-          slug: {
-            name: "category",
-            value: props.category?.name,
-          },
-          property: "$contains",
-        },
-      });
-    }
-  } else {
-    {
-      queryString = generateProductQueryString({
-        filters: {
-          slug: {
-            name: "name",
+          search: {
+            slug: "name",
+            catcher: "$contains",
             value: props.productName,
           },
-          property: "$contains",
         },
       });
     }
   }
 
-  const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_DATABASE_URL}/${queryString}`
+  console.log(
+    `${process.env.NEXT_PUBLIC_DATABASE_URL}/api/products?populate=*&${queryString}`
   );
+
+  const response = await axios.get(
+    `${process.env.NEXT_PUBLIC_DATABASE_URL}/api/products?populate=*&${queryString}`
+  );
+
   const data = ProductSelector(response.data.data);
 
   return data;

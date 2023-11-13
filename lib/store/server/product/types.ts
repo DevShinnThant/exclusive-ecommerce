@@ -176,21 +176,48 @@ export interface Product {
 }
 
 export interface ProductQuery {
+  initialFilter?: {
+    slug: string;
+    catcher: string;
+    value: string;
+  };
   filters?: {
-    slug: {
-      name: string;
-      value: string;
-    };
-    property?: string;
-    notEqual?: {
+    category?: {
       slug: string;
-      name: string;
+      catcher: string;
       value: string;
     };
-    deep?: {
-      columnName: string;
+    ids?: {
+      catcher: string;
+      value: string[];
+    };
+    search?: {
+      slug: string;
+      catcher: string;
+      value: string;
     };
   };
+
+  // filters?: {
+  //   slug: {
+  //     name: string;
+  //     value: string;
+  //   };
+  //   property?: string;
+  //   notEqual?: {
+  //     slug: string;
+  //     name: string;
+  //     value: string;
+  //   };
+  //   contain?: {
+  //     slug: string;
+
+  //     value: string;
+  //   };
+  //   deep?: {
+  //     columnName: string;
+  //   };
+  // };
   pagination?: {
     page?: number;
     pageSize?: number;

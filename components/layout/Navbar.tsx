@@ -1,11 +1,12 @@
 // Icons
 
-import SearchInput from "../SearchInput";
+import SearchInput from "../input/SearchInput";
 import Link from "next/link";
 import AuthDropDown from "./AuthDropDown";
 import WishlistIcon from "@/app/icons/navbar/Wishlist";
-import CartIcon from "@/app/icons/navbar/Cart";
-import UserIcon from "@/app/icons/navbar/User";
+
+import CartSlider from "../cart/CartSlider";
+import { Button } from "../ui/button";
 
 export default function Navbar() {
   return (
@@ -30,7 +31,8 @@ export default function Navbar() {
             <SearchInput />
             <div className="cursor-pointer flex items-center gap-5">
               <WishlistIcon />
-              <CartIcon />
+
+              <CartSlider />
             </div>
           </div>
         </div>

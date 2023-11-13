@@ -10,17 +10,15 @@ async function fetchProducts(name: string) {
       ? "api/products?populate=*"
       : generateProductQueryString({
           filters: {
-            slug: {
-              name: "category",
+            category: {
+              slug: "Name",
+              catcher: "$eq",
               value: name,
-            },
-            deep: {
-              columnName: "Name",
             },
           },
         });
   const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_DATABASE_URL}/${queryString}`
+    `${process.env.NEXT_PUBLIC_DATABASE_URL}/api/products?populate=*&${queryString}`
   );
   const data = ProductSelector(response.data.data);
 

@@ -1,19 +1,18 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-
 import CategoryTitle from "@/components/layout/CategotyTitle";
 import { useGetProducts } from "@/lib/store/server/product/queries";
 import ProductSkeleton from "@/components/skeletons/ProductSkeleton";
-import ProductCard from "@/components/ProductCard";
+import ProductCard from "@/components/product/ProductCard";
 import Link from "next/link";
 import { ArrowLeftIcon, ArrowRightIcon } from "@radix-ui/react-icons";
 
 export default function ExploreOurProducts() {
   const { isLoading, data } = useGetProducts({
     filters: {
-      slug: {
-        name: "variant",
+      search: {
+        slug: "variant",
+        catcher: "$eq",
         value: "normal",
       },
     },

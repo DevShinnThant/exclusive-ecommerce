@@ -8,23 +8,26 @@ const Server = process.env.NEXT_PUBLIC_DATABASE_URL;
 
 async function fetchRelatedProducts({ categoryName, productName }: Props) {
   const queryString = generateProductQueryString({
+    initialFilter: {
+      slug: "name",
+      catcher: "$ne",
+      value: productName,
+    },
     filters: {
-      slug: {
-        name: "category",
+      category: {
+        slug: "Name",
+        catcher: "$eq",
         value: categoryName,
-      },
-      deep: {
-        columnName: "Name",
-      },
-      notEqual: {
-        slug: "$ne",
-        name: "name",
-        value: productName,
       },
     },
   });
+
+  console.log(
+    `${process.env.NEXT_PUBLIC_DATABASE_URL}/api/products?populate=*&${queryString}`
+  );
+
   const response = await axios.get(
-    `${process.env.NEXT_PUBLIC_DATABASE_URL}/${queryString}`
+    `${process.env.NEXT_PUBLIC_DATABASE_URL}/api/products?populate=*&${queryString}`
   );
   const data = ProductSelector(response.data.data);
 
