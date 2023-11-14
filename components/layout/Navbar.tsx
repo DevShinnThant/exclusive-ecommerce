@@ -6,7 +6,6 @@ import AuthDropDown from "./AuthDropDown";
 import WishlistIcon from "@/app/icons/navbar/Wishlist";
 
 import CartSlider from "../cart/CartSlider";
-import { Button } from "../ui/button";
 
 export default function Navbar() {
   return (
@@ -30,7 +29,9 @@ export default function Navbar() {
           <div className="col-span-4 flex justify-end items-center gap-6">
             <SearchInput />
             <div className="cursor-pointer flex items-center gap-5">
-              <WishlistIcon />
+              <Link href="/wishlist">
+                <WishlistIcon />
+              </Link>
               <CartSlider />
             </div>
           </div>

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sheet";
 
 import { Button } from "../ui/button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CartItem from "./CartItem";
 import { useCartStore } from "@/lib/hooks/useCart";
 import useMounted from "@/lib/hooks/useMounted";

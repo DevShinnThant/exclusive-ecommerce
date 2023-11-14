@@ -32,6 +32,9 @@
   .main-container {
     @apply mx-auto w-full max-w-6xl py-6;
   }
+  .fix-w-nav {
+    @apply w-full px-[105px];
+  }
 }
 
 @layer components {

@@ -2,6 +2,15 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import { Cart } from "./cartStore";
 
+export interface WishCart {
+  id: number;
+  name: string;
+  image: string;
+  variant: string;
+  price: number;
+  discountPrice: number;
+}
+
 interface WishlistState {
   wishlists: Cart[];
   addWishList: (wishCart: Cart) => void;
