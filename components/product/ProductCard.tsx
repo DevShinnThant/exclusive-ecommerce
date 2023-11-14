@@ -40,10 +40,7 @@ export default function ProductCard({
   product: Product;
 }) {
   return (
-    <Link
-      href={`/product/${name}`}
-      className="col-span-3 cursor-pointer flex flex-col"
-    >
+    <div className="col-span-3 cursor-pointer flex flex-col">
       {/* Image */}
       <div className="relative group bg-secondary h-[250px]   rounded-sm flex items-center justify-center transition-opacity animate-fade-in">
         {image && (
@@ -60,9 +57,12 @@ export default function ProductCard({
           <div className="bg-primary cursor-pointer w-8 h-8 rounded-full flex items-center justify-center">
             <HeartIcon />
           </div>
-          <div className="bg-primary cursor-pointer w-8 h-8 rounded-full flex items-center justify-center">
+          <Link
+            href={`/product/${name}`}
+            className="bg-primary cursor-pointer w-8 h-8 rounded-full flex items-center justify-center"
+          >
             <EyeOpenIcon />
-          </div>
+          </Link>
         </div>
       </div>
       {/* End */}
@@ -85,6 +85,6 @@ export default function ProductCard({
         </div>
         <div className="text-sm text-text_one">({voting})</div>
       </div>
-    </Link>
+    </div>
   );
 }

@@ -11,29 +11,33 @@ import {
 } from "@/components/ui/sheet";
 
 import { Button } from "../ui/button";
-import useCartStore from "@/lib/hooks/useCartStore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartItem from "./CartItem";
+import { useCartStore } from "@/lib/hooks/useCart";
+import useMounted from "@/lib/hooks/useMounted";
 
 export default function CartSlider() {
   const [opened, setOpened] = useState<boolean>(false);
 
   const { carts, total } = useCartStore();
 
+  const isMounted = useMounted();
+
   return (
     <Sheet open={opened} onOpenChange={setOpened}>
       <SheetTrigger asChild>
-        <div onClick={() => setOpened(true)} className="relative">
-          <Button aria-label="Cart" variant="link">
-            <CartIcon />
-          </Button>
-
-          {carts.length > 0 ? (
+        <Button
+          className="relative"
+          variant="link"
+          onClick={() => setOpened(true)}
+        >
+          <CartIcon />
+          {carts.length > 0 && isMounted && (
             <div className="absolute top-0 right-2 w-4 h-4 rounded-full bg-button_two flex items-center justify-center text-white text-[10px]">
               {carts.length}
             </div>
-          ) : null}
-        </div>
+          )}
+        </Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>

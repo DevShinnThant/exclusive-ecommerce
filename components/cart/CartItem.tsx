@@ -1,4 +1,4 @@
-import useCart from "@/lib/hooks/useCart";
+import { useCart } from "@/lib/hooks/useCart";
 import { Cart } from "@/lib/store/client/cartStore";
 
 import { Product } from "@/lib/store/server/product/types";
