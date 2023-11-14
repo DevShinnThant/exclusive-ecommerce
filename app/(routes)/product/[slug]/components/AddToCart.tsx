@@ -2,20 +2,30 @@
 
 import { useToast } from "@/components/ui/use-toast";
 import useCart from "@/lib/hooks/useCart";
+import { ProductResponse } from "@/lib/store/server/product/types";
+
 import { PlusIcon } from "@radix-ui/react-icons";
 
 interface Props {
-  productId: number;
+  product: ProductResponse;
 }
 
-export default function AddToCart({ productId }: Props) {
+export default function AddToCart({ product }: Props) {
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const productData = product.attributes;
 
   return (
     <button
       onClick={() => {
-        addToCart(productId);
+        addToCart({
+          id: product.id,
+          name: productData.name,
+          image: productData.images.data[0].attributes.url,
+          price: productData.dis_price,
+          variant: productData.variant,
+          quantity: 0,
+        });
         toast({
           type: "background",
           color: "black",

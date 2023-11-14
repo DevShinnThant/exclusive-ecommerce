@@ -1,14 +1,19 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import { Product } from "../server/product/types";
 
-type Cart = {
+export interface Cart {
   id: number;
+  name: string;
+  image: string;
+  price: number;
+  variant: string;
   quantity: number;
-};
+}
 
 type CartState = {
   carts: Cart[];
-  addCart: (id: number) => void;
+  addCart: (product: Cart) => void;
   removeCart: (id: number) => void;
   deleteCart: (id: number) => void;
 };
@@ -17,28 +22,48 @@ export const cartStore = create<CartState>()(
   persist(
     (set) => ({
       carts: [],
-      addCart: (id: number) =>
+      addCart: (product) =>
         set((state) => {
-          const isExisted = state.carts.find((cart) => cart.id === id);
+          console.log(product);
+
+          const isExisted = state.carts.find((cart) => cart.id === product.id);
           let newCarts;
           if (isExisted) {
             newCarts = state.carts.map((cart) => {
-              return cart.id === id
-                ? { id: cart.id, quantity: cart.quantity + 1 }
+              return cart.id === product.id
+                ? { ...cart, quantity: cart.quantity + 1 }
                 : cart;
             });
           } else {
-            newCarts = [...state.carts, { id, quantity: 1 }];
+            newCarts = [
+              ...state.carts,
+              {
+                id: product.id,
+                name: product.name,
+                quantity: 1,
+                image: product.image,
+                variant: product.variant,
+                price: product.price,
+              },
+            ];
           }
           return {
             carts: newCarts,
           };
         }),
-      removeCart: (id: number) =>
+      removeCart: (id) =>
         set((state) => {
-          const newCarts = state.carts.map((cart) =>
-            cart.id === id ? { id: cart.id, quantity: cart.quantity - 1 } : cart
-          );
+          const isRemove =
+            state.carts.find((cart) => cart.id === id)?.quantity === 1;
+          let newCarts = [];
+
+          if (isRemove) {
+            newCarts = state.carts.filter((cart) => cart.id !== id);
+          } else {
+            newCarts = state.carts.map((cart) =>
+              cart.id === id ? { ...cart, quantity: cart.quantity - 1 } : cart
+            );
+          }
           return {
             carts: newCarts,
           };

@@ -17,7 +17,7 @@ export default function ProductInfo({ product }: Props) {
       </div>
       <div className="w-full h-[0.01px] border border-gray-500" />
       <Variant product={product} />
-      <AddToCart productId={product.id} />
+      <AddToCart product={product} />
     </div>
   );
 }
