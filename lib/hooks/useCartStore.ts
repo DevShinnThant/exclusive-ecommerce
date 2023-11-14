@@ -3,9 +3,18 @@ import useCart from "./useCart";
 import { useGetProducts } from "../store/server/product/queries";
 import { Product } from "../store/server/product/types";
 
+export interface Cart {
+  id: number;
+  name: string;
+  dis_price: number;
+  variant: string;
+  qty: number;
+  image: string;
+}
+
 export default function useCartStore(): {
   isLoading: boolean;
-  carts: Product[];
+  carts: Cart[];
   total: number;
 } {
   const { carts } = useCart();
@@ -20,6 +29,19 @@ export default function useCartStore(): {
       },
     },
   });
+
+  const qtyMap = new Map<number, number>();
+
+  carts.forEach((cart) => qtyMap.set(cart.id, cart.quantity));
+
+  const cartData = data?.map((product) => ({
+    id: product.id,
+    name: product.name,
+    dis_price: product.dis_price,
+    variant: product.variant,
+    qty: qtyMap.get(product.id) || 1,
+    image: product.image,
+  }));
 
   const total = useMemo(() => {
     return (
@@ -42,7 +64,7 @@ export default function useCartStore(): {
 
   return {
     isLoading,
-    carts: data || [],
+    carts: cartData || [],
     total,
   };
 }
