@@ -12,9 +12,9 @@ export interface WishCart {
 }
 
 interface WishlistState {
-  wishlists: Cart[];
-  addWishList: (wishCart: Cart) => void;
-  removeWishList: (wishCart: Cart) => void;
+  wishlists: WishCart[];
+  addWishList: (wishCart: WishCart) => void;
+  removeWishList: (wishCart: WishCart) => void;
 }
 
 export const wishlistStore = create<WishlistState>()(

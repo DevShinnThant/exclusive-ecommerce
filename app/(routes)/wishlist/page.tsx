@@ -1,22 +1,14 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { useWishlist } from "@/lib/hooks/useWishlist";
-import { BoxIcon, BoxModelIcon, CubeIcon } from "@radix-ui/react-icons";
 import { columns } from "./components/columns";
 import { DataTable } from "@/components/Table";
 
 export default function Wishlist() {
   const { wishlists } = useWishlist();
+
+  console.log(wishlists);
 
   return (
     <div className="fix-w-nav py-10">
@@ -29,8 +21,7 @@ export default function Wishlist() {
         <div className="text-2xl font-semibold">My Wishlist</div>
 
         {/* Table */}
-
-        <DataTable columns={columns} data={[]} />
+        <DataTable columns={columns} data={wishlists || []} />
       </div>
     </div>
   );

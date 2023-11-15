@@ -5,6 +5,7 @@ import FullStarIcon from "@/app/icons/product/FullStar";
 import EmptyStarIcon from "@/app/icons/product/EmptyStar";
 import Link from "next/link";
 import { EyeOpenIcon, HeartIcon } from "@radix-ui/react-icons";
+import { useWishlist } from "@/lib/hooks/useWishlist";
 
 const Server = process.env.NEXT_PUBLIC_DATABASE_URL;
 
@@ -35,14 +36,15 @@ function generateProductStar(count: number) {
 }
 
 export default function ProductCard({
-  product: { name, price, dis_price, rating, voting, image },
+  product: { id, name, price, dis_price, rating, voting, image, variant },
 }: {
   product: Product;
 }) {
+  const { addWishList } = useWishlist();
   return (
     <div className="col-span-3 cursor-pointer flex flex-col">
       {/* Image */}
-      <div className="relative group bg-secondary h-[250px]   rounded-sm flex items-center justify-center transition-opacity animate-fade-in">
+      <div className="relative group bg-secondary h-[250px] rounded-sm flex items-center justify-center transition-opacity animate-fade-in">
         {image && (
           <Image
             width={160}
@@ -54,12 +56,24 @@ export default function ProductCard({
         )}
 
         <div className="absolute flex flex-col gap-1.5 justify-center items-center right-2 top-2">
-          <div className="bg-primary cursor-pointer w-8 h-8 rounded-full flex items-center justify-center">
+          <div
+            onClick={() => {
+              addWishList({
+                id,
+                name,
+                image,
+                variant,
+                price,
+                discountPrice: dis_price,
+              });
+            }}
+            className="bg-primary hover:bg-button_two hover:text-white transition-all cursor-pointer w-8 h-8 rounded-full flex items-center justify-center"
+          >
             <HeartIcon />
           </div>
           <Link
             href={`/product/${name}`}
-            className="bg-primary cursor-pointer w-8 h-8 rounded-full flex items-center justify-center"
+            className="bg-primary hover:bg-button_two hover:text-white  cursor-pointer w-8 h-8 rounded-full flex items-center justify-center"
           >
             <EyeOpenIcon />
           </Link>

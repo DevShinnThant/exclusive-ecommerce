@@ -1,7 +1,8 @@
 "use client";
 
 import { useToast } from "@/components/ui/use-toast";
-import useCart from "@/lib/hooks/useCart";
+import { useCart } from "@/lib/hooks/useCart";
+
 import { ProductResponse } from "@/lib/store/server/product/types";
 
 import { PlusIcon } from "@radix-ui/react-icons";
