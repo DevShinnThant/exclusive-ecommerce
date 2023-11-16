@@ -7,7 +7,7 @@ import { generateProductQueryString } from "@/lib/utils";
 async function fetchProducts(name: string) {
   const queryString =
     name === "all"
-      ? "api/products?populate=*"
+      ? ""
       : generateProductQueryString({
           filters: {
             category: {
@@ -17,6 +17,7 @@ async function fetchProducts(name: string) {
             },
           },
         });
+
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_DATABASE_URL}/api/products?populate=*&${queryString}`
   );

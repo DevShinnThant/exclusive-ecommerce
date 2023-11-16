@@ -15,7 +15,9 @@ export default function ProductInfo({ product }: Props) {
       <div className="text-white flex items-center justify-center text-sm w-24 rounded-full h-10 bg-button_two">
         ${productData.dis_price} USD
       </div>
+
       <div className="w-full h-[0.01px] border border-gray-500" />
+
       <Variant product={product} />
       <AddToCart product={product} />
     </div>

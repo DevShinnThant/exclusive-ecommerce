@@ -20,15 +20,27 @@ async function fetchProducts(props: {
 
   if (props.tag === "category" && props.category) {
     {
-      queryString = generateProductQueryString({
-        filters: {
-          category: {
-            slug: "Name",
-            catcher: "$eq",
-            value: props.category?.name,
+      if (props.category.name === "all") {
+        queryString = generateProductQueryString({
+          filters: {
+            search: {
+              slug: "name",
+              catcher: "$contains",
+              value: props.productName,
+            },
           },
-        },
-      });
+        });
+      } else {
+        queryString = generateProductQueryString({
+          filters: {
+            category: {
+              slug: "Name",
+              catcher: "$eq",
+              value: props.category?.name,
+            },
+          },
+        });
+      }
     }
   }
   // else if (props.tag === "sort" && props.sort) {
@@ -58,9 +70,7 @@ async function fetchProducts(props: {
     }
   }
 
-  console.log(
-    `${process.env.NEXT_PUBLIC_DATABASE_URL}/api/products?populate=*&${queryString}`
-  );
+  console.log({ queryString });
 
   const response = await axios.get(
     `${process.env.NEXT_PUBLIC_DATABASE_URL}/api/products?populate=*&${queryString}`
