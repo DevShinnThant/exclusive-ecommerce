@@ -1,3 +1,5 @@
+"use client";
+
 import { Product } from "@/lib/store/server/product/types";
 import Image from "next/image";
 import HalfStarIcon from "@/app/icons/product/HalfStar";

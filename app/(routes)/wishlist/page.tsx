@@ -4,6 +4,7 @@ import { Separator } from "@/components/ui/separator";
 import { useWishlist } from "@/lib/hooks/useWishlist";
 import { columns } from "./components/columns";
 import { DataTable } from "@/components/Table";
+import Link from "next/link";
 
 export default function Wishlist() {
   const { wishlists } = useWishlist();
@@ -12,7 +13,7 @@ export default function Wishlist() {
     <div className="fix-w-nav py-10">
       <div className="flex flex-col gap-4 justify-start">
         <div className="flex h-5 items-center space-x-4 text-sm">
-          <div>Home</div>
+          <Link href="/">Home</Link>
           <Separator orientation="vertical" />
           <div>Wishlist</div>
         </div>
