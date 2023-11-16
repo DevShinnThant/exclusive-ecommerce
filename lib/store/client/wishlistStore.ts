@@ -1,7 +1,5 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { Cart } from "./cartStore";
-
 export interface WishCart {
   id: number;
   name: string;
@@ -14,7 +12,7 @@ export interface WishCart {
 interface WishlistState {
   wishlists: WishCart[];
   addWishList: (wishCart: WishCart) => void;
-  removeWishList: (wishCart: WishCart) => void;
+  removeWishList: (id: number) => void;
 }
 
 export const wishlistStore = create<WishlistState>()(
@@ -27,10 +25,10 @@ export const wishlistStore = create<WishlistState>()(
             wishlists: [...state.wishlists, wishCart],
           };
         }),
-      removeWishList: (wishCart) =>
+      removeWishList: (id) =>
         set((state) => {
           const filteredWishlist = state.wishlists.filter(
-            (cart) => cart.id !== wishCart.id
+            (cart) => cart.id !== id
           );
           return {
             wishlists: filteredWishlist,

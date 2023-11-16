@@ -6,6 +6,7 @@ import EmptyStarIcon from "@/app/icons/product/EmptyStar";
 import Link from "next/link";
 import { EyeOpenIcon, HeartIcon } from "@radix-ui/react-icons";
 import { useWishlist } from "@/lib/hooks/useWishlist";
+import { useToast } from "../ui/use-toast";
 
 const Server = process.env.NEXT_PUBLIC_DATABASE_URL;
 
@@ -40,7 +41,37 @@ export default function ProductCard({
 }: {
   product: Product;
 }) {
-  const { addWishList } = useWishlist();
+  const { toast } = useToast();
+  const { addWishList, wishlists } = useWishlist();
+
+  const handleAddToWishlist = () => {
+    const isExisted = wishlists.find((cart) => cart.id === id);
+
+    if (isExisted) {
+      toast({
+        type: "background",
+        color: "black",
+        title: "Cart is already existed.",
+        description: "View your cart list.",
+      });
+    } else {
+      addWishList({
+        id,
+        name,
+        image,
+        variant,
+        price,
+        discountPrice: dis_price,
+      });
+      toast({
+        type: "background",
+        color: "black",
+        title: "Added to your wishlist.",
+        description: "View your cart list.",
+      });
+    }
+  };
+
   return (
     <div className="col-span-3 cursor-pointer flex flex-col">
       {/* Image */}
@@ -57,16 +88,7 @@ export default function ProductCard({
 
         <div className="absolute flex flex-col gap-1.5 justify-center items-center right-2 top-2">
           <div
-            onClick={() => {
-              addWishList({
-                id,
-                name,
-                image,
-                variant,
-                price,
-                discountPrice: dis_price,
-              });
-            }}
+            onClick={handleAddToWishlist}
             className="bg-primary hover:bg-button_two hover:text-white transition-all cursor-pointer w-8 h-8 rounded-full flex items-center justify-center"
           >
             <HeartIcon />

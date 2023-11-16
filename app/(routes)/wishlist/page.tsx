@@ -8,8 +8,6 @@ import { DataTable } from "@/components/Table";
 export default function Wishlist() {
   const { wishlists } = useWishlist();
 
-  console.log(wishlists);
-
   return (
     <div className="fix-w-nav py-10">
       <div className="flex flex-col gap-4 justify-start">
@@ -21,7 +19,11 @@ export default function Wishlist() {
         <div className="text-2xl font-semibold">My Wishlist</div>
 
         {/* Table */}
-        <DataTable columns={columns} data={wishlists || []} />
+        <DataTable
+          filterColumn="name"
+          columns={columns}
+          data={wishlists || []}
+        />
       </div>
     </div>
   );

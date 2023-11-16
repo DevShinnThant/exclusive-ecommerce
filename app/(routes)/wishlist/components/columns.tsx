@@ -4,6 +4,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { WishCart } from "@/lib/store/client/wishlistStore";
 import { ColumnDef } from "@tanstack/react-table";
 import Image from "next/image";
+import ActionDropdown from "./action-dropdown";
 
 const SERVER = process.env.NEXT_PUBLIC_DATABASE_URL;
 
@@ -79,5 +80,12 @@ export const columns: ColumnDef<WishCart>[] = [
 
   {
     id: "action",
+    cell: ({ row }) => {
+      return (
+        <div className="text-end">
+          <ActionDropdown id={row.original.id} />
+        </div>
+      );
+    },
   },
 ];
